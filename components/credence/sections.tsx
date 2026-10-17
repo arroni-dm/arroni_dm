@@ -1251,10 +1251,10 @@ export function FinalCallToAction() {
         <div className="absolute bottom-0 left-0 w-[400px] h-[400px] bg-[#ffbc16] rounded-full blur-[150px] opacity-10 transform -translate-x-1/3 translate-y-1/3"></div>
         <div className="relative z-10 text-center w-full">
           <h2 className="text-4xl md:text-6xl font-bold font-outfit mb-6">
-            READY TO BE THE OBVIOUS CHOICE?
+            READY TO GET STARTED RIGHT NOW?
           </h2>
           <p className="text-lg md:text-xl text-white/70 max-w-2xl mx-auto mb-10">
-            We take 5 new clients per quarter. 2 spots remaining.
+            Let's meet on call to discuss your project today!
           </p>
           <div className="flex flex-col items-center justify-center gap-4 w-full">
             <div className="">
@@ -1268,7 +1268,7 @@ export function FinalCallToAction() {
             <div className="flex items-center gap-2 text-sm text-white/50 bg-black/20 px-4 py-2 rounded-full border border-white/5">
               <div className="w-1.5 h-1.5 rounded-full bg-[#ffbc16] animate-pulse"></div>
               <span className="font-medium">
-                Accepting 5 Partners for Q1 | 2 Slots Remaining
+                Accepting 5 Projects for Now | 2 Slots Remaining
               </span>
             </div>
           </div>
@@ -1285,11 +1285,11 @@ export function Footer() {
         <div className="grid grid-cols-1 md:grid-cols-12 gap-12 md:gap-8">
           <div className="md:col-span-5 flex flex-col gap-6">
             <h4 className="text-2xl font-black font-outfit tracking-tight">
-              Growth with Credence.
+              Growth with a #1 Full-stack Digital Marketing Manager.
             </h4>
             <p className="text-white/70 text-sm leading-relaxed max-w-md">
-              There is a gap between how good you actually are and how you look
-              online. That gap is costing you money. Credence closes that gap.
+              There is a gap between how good your product/service actually are and how you look
+              online. That gap is costing you money. I will close that gap.
               Every time.
             </p>
             <div className="mt-4 p-4 rounded-xl bg-black/30 border border-[#ffbc16]/30 inline-block w-fit">
@@ -1298,7 +1298,7 @@ export function Footer() {
                   <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-[#ffbc16] opacity-75"></span>
                   <span className="relative inline-flex rounded-full h-2 w-2 bg-[#ffbc16]"></span>
                 </span>
-                Accepting 5 Partners for Q1 | 2 Slots Remaining
+                Accepting 5 Projects for Now | 2 Slots Remaining
               </span>
             </div>
           </div>
