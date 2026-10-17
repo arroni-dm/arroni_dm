@@ -877,11 +877,11 @@ export function Rankings() {
                   height={500}
                   decoding="async"
                   className="w-full h-auto object-cover"
-                  src="/credence/favikon/cropped/image-2-blurred.jpg"
+                  src="/credence/favikon/cropped/image-2-blurred.png"
                 />
                 <div className="absolute bottom-0 left-0 right-0 bg-black/80 backdrop-blur-sm px-4 py-3">
                   <p className="text-[10px] sm:text-xs font-bold text-white uppercase tracking-widest text-center drop-shadow-md">
-                    #1 Marketing and Sales · LinkedIn · Nigeria
+                    #1 Marketing and Sales · LinkedIn · Bangladesh
                   </p>
                 </div>
               </div>
