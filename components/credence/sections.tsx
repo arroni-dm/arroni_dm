@@ -275,7 +275,7 @@ export function Audience() {
             <span>Strategic Audience Verification</span>
           </div>
           <h2 className="text-4xl md:text-6xl font-black font-outfit tracking-tighter mb-6 text-[#1a1a1a] dark:text-[#F5F5F5]">
-            Who We Serve
+            Who We Wrok With
           </h2>
           <p className="text-xl opacity-70 max-w-2xl mx-auto leading-relaxed font-medium">
             We don&#x27;t work with everyone. We work with people who are ready
