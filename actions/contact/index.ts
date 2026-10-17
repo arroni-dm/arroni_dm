@@ -16,7 +16,10 @@ export async function sendEmail(input: Props) {
     typeof input.email !== "string" ||
     typeof input.inqueryMessage !== "string"
   ) {
-    return { success: false, message: "Please fill in all the required fields." };
+    return {
+      success: false,
+      message: "Please fill in all the required fields.",
+    };
   }
 
   const name = input.name.trim();
@@ -33,7 +36,8 @@ export async function sendEmail(input: Props) {
   if (name.length > 100 || email.length > 254 || inqueryMessage.length > 5000) {
     return {
       success: false,
-      message: "Please limit your name to 100, email to 254, and inquiry to 5,000 characters.",
+      message:
+        "Please limit your name to 100, email to 254, and inquiry to 5,000 characters.",
     };
   }
 
@@ -46,13 +50,17 @@ export async function sendEmail(input: Props) {
   }
 
   if (/[\r\n]/.test(name)) {
-    return { success: false, message: "Please enter your name on a single line." };
+    return {
+      success: false,
+      message: "Please enter your name on a single line.",
+    };
   }
 
   if (!process.env.RESEND_API_KEY) {
     return {
       success: false,
-      message: "Email delivery is temporarily unavailable. Please email us directly or try again later.",
+      message:
+        "Email delivery is temporarily unavailable. Please email us directly or try again later.",
     };
   }
 
@@ -60,7 +68,7 @@ export async function sendEmail(input: Props) {
     const resend = new Resend(process.env.RESEND_API_KEY);
     const { data, error } = await resend.emails.send({
       from: "Credence Contact <lead@anisurrahmanroni.com>",
-      to: ["monirhrabby.personal@gmail.com"],
+      to: ["arroni.dm@gmail.com"],
       replyTo: email,
 
       subject: `New Inquiry from ${name}`,
@@ -74,7 +82,8 @@ export async function sendEmail(input: Props) {
     if (error || !data?.id) {
       return {
         success: false,
-        message: "Failed to send your message. Please try again or email us directly.",
+        message:
+          "Failed to send your message. Please try again or email us directly.",
       };
     }
 
