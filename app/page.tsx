@@ -8,7 +8,7 @@ import "./credence.css";
 
 export const metadata: Metadata = {
   title: "Anisur Rahman Roni",
-  description: "Stop losing money to a weak online presence. Credence fixes the gap between how good you are and how you look online. Expert positioning for founders and consultancies.",
+  description: "Stop losing money to a weak online presence. We fixes the gap between how good you are and how you look online. Expert positioning for founders and consultancies.",
 };
 
 export default function Home() {

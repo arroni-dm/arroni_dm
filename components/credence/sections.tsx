@@ -1043,7 +1043,7 @@ export function FrequentlyAskedQuestions() {
         <div className="space-y-4">
           <details className="group bg-black/5 dark:bg-[#452213] border border-black/5 dark:border-white/5 rounded-[2rem] overflow-hidden transition-all duration-300 open:shadow-md open:bg-white dark:open:bg-[#3c2f21]">
             <summary className="cursor-pointer p-6 md:p-8 font-outfit text-xl font-bold text-[#3c2f21] dark:text-[#F5F5F5] list-none flex justify-between items-center outline-none">
-              What exactly does Credence do?
+              What services do you offer as a Full-Stack Digital Marketing Specialist?
               <span className="w-8 h-8 rounded-full bg-black/10 dark:bg-white/10 flex items-center justify-center transform group-open:rotate-180 transition-transform duration-300">
                 <svg
                   className="w-4 h-4 text-current"
@@ -1061,15 +1061,12 @@ export function FrequentlyAskedQuestions() {
               </span>
             </summary>
             <div className="px-6 md:px-8 pb-6 md:pb-8 pt-0 text-lg opacity-80 leading-relaxed font-medium text-[#3c2f21] dark:text-[#F5F5F5]/90">
-              We close the gap between how good your business is and how the
-              market sees it. We call it &#x27;Authority Infrastructure&#x27;, a
-              unified system that makes you look, feel, and operate at a higher
-              level.
+              I specialize in end-to-end performance marketing, including Google Ads setup & management, Meta Ads (Facebook & Instagram), advanced GA4/GTM tracking, Meta Conversions API (CAPI), and conversion-focused landing page optimization.
             </div>
           </details>
           <details className="group bg-black/5 dark:bg-[#452213] border border-black/5 dark:border-white/5 rounded-[2rem] overflow-hidden transition-all duration-300 open:shadow-md open:bg-white dark:open:bg-[#3c2f21]">
             <summary className="cursor-pointer p-6 md:p-8 font-outfit text-xl font-bold text-[#3c2f21] dark:text-[#F5F5F5] list-none flex justify-between items-center outline-none">
-              How is Credence different from a regular marketing agency?
+              How are you different from a traditional marketing agency?
               <span className="w-8 h-8 rounded-full bg-black/10 dark:bg-white/10 flex items-center justify-center transform group-open:rotate-180 transition-transform duration-300">
                 <svg
                   className="w-4 h-4 text-current"
@@ -1087,14 +1084,12 @@ export function FrequentlyAskedQuestions() {
               </span>
             </summary>
             <div className="px-6 md:px-8 pb-6 md:pb-8 pt-0 text-lg opacity-80 leading-relaxed font-medium text-[#3c2f21] dark:text-[#F5F5F5]/90">
-              Most agencies solve traffic or content problems. We solve
-              perception problems. That&#x27;s a different layer entirely and
-              most agencies never touch it.
+              Agencies often focus on vanity metrics like clicks and impressions. I focus on revenue and accurate data. By combining high-converting paid ads with bulletproof server-side tracking, I ensure every ad dollar delivers measurable ROI.
             </div>
           </details>
           <details className="group bg-black/5 dark:bg-[#452213] border border-black/5 dark:border-white/5 rounded-[2rem] overflow-hidden transition-all duration-300 open:shadow-md open:bg-white dark:open:bg-[#3c2f21]">
             <summary className="cursor-pointer p-6 md:p-8 font-outfit text-xl font-bold text-[#3c2f21] dark:text-[#F5F5F5] list-none flex justify-between items-center outline-none">
-              How fast will I see results?
+              Why do I need enhanced conversion tracking (GA4 & GTM)?
               <span className="w-8 h-8 rounded-full bg-black/10 dark:bg-white/10 flex items-center justify-center transform group-open:rotate-180 transition-transform duration-300">
                 <svg
                   className="w-4 h-4 text-current"
@@ -1112,13 +1107,13 @@ export function FrequentlyAskedQuestions() {
               </span>
             </summary>
             <div className="px-6 md:px-8 pb-6 md:pb-8 pt-0 text-lg opacity-80 leading-relaxed font-medium text-[#3c2f21] dark:text-[#F5F5F5]/90">
-              Most clients notice a shift within the first few weeks. Not vanity
-              metrics, real changes in how people respond, engage and reach out.
+              Due to iOS updates and browser privacy changes, traditional ad tracking loses up to 30-40% of conversion data. Server-side tracking ensures 
+              100% data accuracy, feeding clean signals back to Google and Meta to lower your acquisition costs.
             </div>
           </details>
           <details className="group bg-black/5 dark:bg-[#452213] border border-black/5 dark:border-white/5 rounded-[2rem] overflow-hidden transition-all duration-300 open:shadow-md open:bg-white dark:open:bg-[#3c2f21]">
             <summary className="cursor-pointer p-6 md:p-8 font-outfit text-xl font-bold text-[#3c2f21] dark:text-[#F5F5F5] list-none flex justify-between items-center outline-none">
-              Who is Credence for?
+              What platforms do you specialize in for paid advertising?
               <span className="w-8 h-8 rounded-full bg-black/10 dark:bg-white/10 flex items-center justify-center transform group-open:rotate-180 transition-transform duration-300">
                 <svg
                   className="w-4 h-4 text-current"
@@ -1136,33 +1131,106 @@ export function FrequentlyAskedQuestions() {
               </span>
             </summary>
             <div className="px-6 md:px-8 pb-6 md:pb-8 pt-0 text-lg opacity-80 leading-relaxed font-medium text-[#3c2f21] dark:text-[#F5F5F5]/90">
-              Founders, business owners, and personal brands doing real work but
-              not being seen for it. If your market presence doesn&#x27;t
-              reflect how good you actually are, you&#x27;re who we built this
-              for.
+              My core expertise lies in Google Ads (Search, Performance Max, Shopping, YouTube) and Meta Ads (Facebook & Instagram). 
+              I select and blend these platforms based on your business model and target audience behavior.
             </div>
           </details>
-        </div>
-        <div className="mt-8 text-center">
-          <a
-            className="inline-flex items-center gap-2 px-8 py-4 rounded-full font-bold text-sm bg-black/5 dark:bg-white/5 text-[#3c2f21] dark:text-white border border-black/10 dark:border-white/10 hover:bg-black/10 dark:hover:bg-white/10 transition-colors"
-            href="https://www.growwithcredence.com/faq/"
-          >
-            Read All Questions
-            <svg
-              className="w-4 h-4"
-              fill="none"
-              stroke="currentColor"
-              viewBox="0 0 24 24"
-            >
-              <path
-                strokeLinecap="round"
-                strokeLinejoin="round"
-                strokeWidth="2"
-                d="M17 8l4 4m0 0l-4 4m4-4H3"
-              ></path>
-            </svg>
-          </a>
+          <details className="group bg-black/5 dark:bg-[#452213] border border-black/5 dark:border-white/5 rounded-[2rem] overflow-hidden transition-all duration-300 open:shadow-md open:bg-white dark:open:bg-[#3c2f21]">
+            <summary className="cursor-pointer p-6 md:p-8 font-outfit text-xl font-bold text-[#3c2f21] dark:text-[#F5F5F5] list-none flex justify-between items-center outline-none">
+              How do we get started with a project?
+              <span className="w-8 h-8 rounded-full bg-black/10 dark:bg-white/10 flex items-center justify-center transform group-open:rotate-180 transition-transform duration-300">
+                <svg
+                  className="w-4 h-4 text-current"
+                  fill="none"
+                  stroke="currentColor"
+                  viewBox="0 0 24 24"
+                >
+                  <path
+                    strokeLinecap="round"
+                    strokeLinejoin="round"
+                    strokeWidth="3"
+                    d="M19 9l-7 7-7-7"
+                  ></path>
+                </svg>
+              </span>
+            </summary>
+            <div className="px-6 md:px-8 pb-6 md:pb-8 pt-0 text-lg opacity-80 leading-relaxed font-medium text-[#3c2f21] dark:text-[#F5F5F5]/90">
+              We begin with a Free Audit of your existing ad accounts and analytics setup. I identify budget leaks and conversion gaps, 
+              followed by presenting a customized strategy and roadmap tailored to your growth goals.
+            </div>
+          </details>
+          <details className="group bg-black/5 dark:bg-[#452213] border border-black/5 dark:border-white/5 rounded-[2rem] overflow-hidden transition-all duration-300 open:shadow-md open:bg-white dark:open:bg-[#3c2f21]">
+            <summary className="cursor-pointer p-6 md:p-8 font-outfit text-xl font-bold text-[#3c2f21] dark:text-[#F5F5F5] list-none flex justify-between items-center outline-none">
+              Will I have full ownership of my ad accounts and data?
+              <span className="w-8 h-8 rounded-full bg-black/10 dark:bg-white/10 flex items-center justify-center transform group-open:rotate-180 transition-transform duration-300">
+                <svg
+                  className="w-4 h-4 text-current"
+                  fill="none"
+                  stroke="currentColor"
+                  viewBox="0 0 24 24"
+                >
+                  <path
+                    strokeLinecap="round"
+                    strokeLinejoin="round"
+                    strokeWidth="3"
+                    d="M19 9l-7 7-7-7"
+                  ></path>
+                </svg>
+              </span>
+            </summary>
+            <div className="px-6 md:px-8 pb-6 md:pb-8 pt-0 text-lg opacity-80 leading-relaxed font-medium text-[#3c2f21] dark:text-[#F5F5F5]/90">
+              100% yes. All ad accounts, Google Tag Manager containers, and GA4 properties remain under your ownership. 
+              I work via admin or partner access, ensuring you maintain complete control over your assets at all times.
+            </div>
+          </details>
+          <details className="group bg-black/5 dark:bg-[#452213] border border-black/5 dark:border-white/5 rounded-[2rem] overflow-hidden transition-all duration-300 open:shadow-md open:bg-white dark:open:bg-[#3c2f21]">
+            <summary className="cursor-pointer p-6 md:p-8 font-outfit text-xl font-bold text-[#3c2f21] dark:text-[#F5F5F5] list-none flex justify-between items-center outline-none">
+              What do you need from me to start managing my campaigns?
+              <span className="w-8 h-8 rounded-full bg-black/10 dark:bg-white/10 flex items-center justify-center transform group-open:rotate-180 transition-transform duration-300">
+                <svg
+                  className="w-4 h-4 text-current"
+                  fill="none"
+                  stroke="currentColor"
+                  viewBox="0 0 24 24"
+                >
+                  <path
+                    strokeLinecap="round"
+                    strokeLinejoin="round"
+                    strokeWidth="3"
+                    d="M19 9l-7 7-7-7"
+                  ></path>
+                </svg>
+              </span>
+            </summary>
+            <div className="px-6 md:px-8 pb-6 md:pb-8 pt-0 text-lg opacity-80 leading-relaxed font-medium text-[#3c2f21] dark:text-[#F5F5F5]/90">
+              I'll need partner/admin access to your Google Ads, Meta Business Manager, GA4, GTM, and website backend (or Shopify/WordPress). 
+              I provide a simple onboarding checklist to complete this process smoothly.
+            </div>
+          </details>
+          <details className="group bg-black/5 dark:bg-[#452213] border border-black/5 dark:border-white/5 rounded-[2rem] overflow-hidden transition-all duration-300 open:shadow-md open:bg-white dark:open:bg-[#3c2f21]">
+            <summary className="cursor-pointer p-6 md:p-8 font-outfit text-xl font-bold text-[#3c2f21] dark:text-[#F5F5F5] list-none flex justify-between items-center outline-none">
+              How do you handle reporting and campaign communication?
+              <span className="w-8 h-8 rounded-full bg-black/10 dark:bg-white/10 flex items-center justify-center transform group-open:rotate-180 transition-transform duration-300">
+                <svg
+                  className="w-4 h-4 text-current"
+                  fill="none"
+                  stroke="currentColor"
+                  viewBox="0 0 24 24"
+                >
+                  <path
+                    strokeLinecap="round"
+                    strokeLinejoin="round"
+                    strokeWidth="3"
+                    d="M19 9l-7 7-7-7"
+                  ></path>
+                </svg>
+              </span>
+            </summary>
+            <div className="px-6 md:px-8 pb-6 md:pb-8 pt-0 text-lg opacity-80 leading-relaxed font-medium text-[#3c2f21] dark:text-[#F5F5F5]/90">
+              You get access to a live Looker Studio dashboard that updates real-time metrics. Additionally, 
+              I provide weekly performance summaries and monthly strategic video calls to review progress and scale next steps.
+            </div>
+          </details>
         </div>
       </div>
     </section>
