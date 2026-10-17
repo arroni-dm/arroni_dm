@@ -25,14 +25,18 @@ The implementation reuses the project's original logo, Inter and Outfit files, s
 
 ## Integration and accessibility
 
-There is no contact API, server action, or delivery service in the project. The form deliberately makes **no network submission** and never claims delivery or success. A visible integration notice and mailto alternative appear below the button. Valid submission displays an accessible delivery-unavailable alert and retains all values. Repeated submissions cannot create duplicate deliveries because no delivery request is made. Loading, asynchronous duplicate guards, and success feedback should be added together with a real backend, once its response contract exists.
+The form now calls the `sendEmail` Server Action in `actions/contact/index.ts`, mapping the inquiry field to its existing `inqueryMessage` argument. Resend renders the contact email template, sends to `monirhrabby.personal@gmail.com`, and sets Reply-To to the visitor's trimmed email address. A pending transition shows "Sending...", disables submission, and makes the fields read-only; a synchronous guard prevents repeated submissions while the request is pending. Only a successful provider response resets the form and announces success. Provider failures and network exceptions retain the draft and show an accessible error. Editing clears previous feedback. The direct-email link remains available.
+
+Set `RESEND_API_KEY` in `.env.local` for development and in the deployment's server environment, then restart the app. The sender is `Credence Contact <lead@anisurrahmanroni.com>`; its domain must be verified in the Resend account. Sender and recipient can be adjusted in the action. A missing key returns an unavailable message instead of throwing during module initialization. Both client and server validate required fields, email format, and length limits (name: 100, email: 254, inquiry: 5,000 characters); the server also checks runtime types and rejects line breaks in header values. Provider error details are not exposed to visitors.
+
+Email integration verification: production build, TypeScript, and ESLint for the action/form passed. Mocked server-action checks covered malformed, empty, oversized, and invalid inputs; missing configuration; trimmed template payload; provider success, error, missing delivery ID, and exception. Simulated form-handler checks covered validation/focus, pending controls, duplicate prevention, retained drafts, retry, success reset, and feedback clearing. No real emails were sent and browser interaction was not verified. No qualifying Next.js feedback candidates were retained.
 
 All fields have explicit labels, required attributes, email input semantics, autocomplete where appropriate, field-specific errors via `aria-describedby` and `aria-invalid`, and focus moves to the first invalid field. Whitespace-only values are rejected. Keyboard focus indicators cover links, buttons and controls; the page includes a skip link. Shared dialogs retain native Escape/focus behavior.
 
 ## Differences and verification
 
 - Desktop navigation switches at 1000px rather than the reference's `md` breakpoint, to avoid squeezing the logo, links and booking button on tablets. Mobile navigation is available below that width.
-- The delivery notice, validation messages, and failure alert add space relative to the reference. The introduction retains the reference's response-time wording; the notice explains that this local form cannot deliver messages yet.
+- The direct-email alternative, validation messages, and delivery feedback add space relative to the reference. The introduction retains the reference's response-time wording.
 - Entrance animation is omitted. Only the light reference theme is targeted.
 - Screenshot comparison, rendered dimensions, mobile overflow, keyboard interactions, and browser email validity were **not verified**: browser discovery returned no available browser. No claim of pixel-perfect accuracy is made.
 - Production build passed and prerendered `/contact`.
