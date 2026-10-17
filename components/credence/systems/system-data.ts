@@ -24,6 +24,7 @@ export const linkedin: SystemContent = {
     { name: "The 30-Day Sprint", focus: "Building Trust & Proving Expertise.", content: "12 posts that prove your expertise and build trust with the people who matter. We write them. You approve them." },
     { name: "Full Management", focus: "Network Growth & Consistent Engagement.", content: "We run your LinkedIn completely. 20+ posts per month. Network growth. Inbox management. You focus on your business. We focus on your presence." },
     { name: "Elite Advisory", focus: "Global Industry Leadership.", content: "PR. Speaking opportunities. Industry positioning. We turn your name into one your industry cannot ignore." },
+    { name: "Roni Test", focus: "Global Industry Leadership.", content: "PR. Speaking opportunities. Industry positioning. We turn your name into one your industry cannot ignore." },
   ],
   philosophy: { label: "Founder's Logic", heading: '"If someone can\'t immediately see your value, they will assume you have none."' },
 };

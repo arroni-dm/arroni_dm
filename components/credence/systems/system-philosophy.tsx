@@ -15,7 +15,7 @@ export function SystemPhilosophy({ system }: { system: SystemContent }) {
       <div aria-hidden="true" className={`pointer-events-none absolute top-1/2 left-1/2 h-[400px] w-full max-w-3xl -translate-x-1/2 -translate-y-1/2 rounded-full blur-[100px] ${accent.glow}`} />
       <div className="relative z-10 container mx-auto flex max-w-5xl flex-col items-center rounded-3xl border border-[#333333] bg-[#1A1A1A] p-8 text-center shadow-2xl sm:p-12">
         <div className={`relative mb-8 size-28 overflow-hidden rounded-full border-2 shadow-2xl sm:size-32 ${accent.portrait}`}>
-          <Image unoptimized src="/credence/blossom-headshot.webp" alt="Blossom Affia" width={128} height={128} className="h-full w-full object-cover object-[70%_20%] grayscale-[20%]" />
+          <Image unoptimized src="/credence/blossom-headshot.png" alt="Blossom Affia" width={128} height={128} className="h-full w-full object-cover object-[70%_20%] grayscale-[20%]" />
         </div>
         <h2 className={`mt-2 text-[10px] font-black tracking-[0.3em] uppercase ${accent.label} ${system.slug === "linkedin" ? "mb-8" : "mb-6"}`}>{system.philosophy.label}</h2>
         <h3 id="philosophy-heading" className={`font-outfit max-w-4xl leading-tight font-black tracking-tighter text-white ${system.slug === "linkedin" ? "text-2xl sm:text-3xl md:text-4xl lg:text-5xl" : "mb-8 text-3xl sm:text-4xl md:text-5xl"}`}>

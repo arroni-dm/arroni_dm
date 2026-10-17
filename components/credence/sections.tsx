@@ -1266,6 +1266,12 @@ export function Footer() {
             >
               System 04: Website
             </Link>
+            <Link
+              className="text-sm text-white/60 hover:text-[#ffbc16] transition-colors duration-300"
+              href="/systems/web/"
+            >
+              System 05: Test
+            </Link>
           </div>
         </div>
         <div className="mt-16 pt-8 border-t border-white/5 flex flex-col md:flex-row justify-between items-center gap-4">
