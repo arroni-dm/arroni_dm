@@ -7,7 +7,7 @@ import {
 import "./credence.css";
 
 export const metadata: Metadata = {
-  title: "Credence | High-Ticket Positioning for Executive Consultancies",
+  title: "Anisur Rahman Roni",
   description: "Stop losing money to a weak online presence. Credence fixes the gap between how good you are and how you look online. Expert positioning for founders and consultancies.",
 };
 
