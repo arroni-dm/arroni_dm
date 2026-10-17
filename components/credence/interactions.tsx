@@ -1,8 +1,9 @@
 "use client";
 
-import { createContext, useContext, useEffect, useRef, useState, type ReactNode, type FormEvent } from "react";
-import { Menu, X, ChevronDown } from "lucide-react";
+import { createContext, useContext, useEffect, useRef, useState, useTransition, type ReactNode, type FormEvent } from "react";
+import { Menu, X, ChevronDown, LoaderCircle, CheckCircle2 } from "lucide-react";
 import Link from "next/link";
+import { sendEmail } from "@/actions/contact";
 import type { BookingPersona, SystemSlug } from "./systems/system-data";
 
 const BookingContext = createContext<() => void>(() => {});
@@ -50,7 +51,7 @@ const challengesByPersona: Record<BookingPersona, string[]> = {
   Email: ["I have no system to capture leads", "My list exists but doesn't engage", "My revenue is unpredictable month to month"],
   Web: ["My site doesn't make me look credible", "People visit but don't convert", "My site is outdated and working against me"],
 };
-const initial = { callType: "free", name: "", email: "", country: "", role: "", roleOther: "", revenue: "", timeInBusiness: "", goal: "", goalOther: "", challenge: "", challengeOther: "" };
+const initial = { callType: "free", name: "", email: "", country: "", role: "", roleOther: "", revenue: "", timeInBusiness: "", goal: "", goalOther: "", challenge: "", challengeOther: "", message: "" };
 const fieldClass = "space-y-5";
 const primaryButton = "flex-1 bg-[#3c2f21] text-white py-4 px-6 rounded-2xl font-black text-sm uppercase tracking-widest disabled:opacity-50 hover:bg-[#2a2117] transition-colors shadow-md";
 
@@ -61,8 +62,15 @@ export function CredenceInteractions({ children, bookingPersona = "General" }: {
   const [step, setStep] = useState(0);
   const [data, setData] = useState(initial);
   const [mobilePath, setMobilePath] = useState("free");
+  const [isPending, startTransition] = useTransition();
+  const submissionInFlight = useRef(false);
+  const [deliveryError, setDeliveryError] = useState("");
+  const [calendarUrl, setCalendarUrl] = useState("");
   const title = useRef<HTMLHeadingElement>(null);
-  const update = (key: keyof typeof initial, value: string) => setData(previous => ({ ...previous, [key]: value }));
+  const update = (key: keyof typeof initial, value: string) => {
+    setData(previous => ({ ...previous, [key]: value }));
+    setDeliveryError("");
+  };
 
   useEffect(() => {
     if (window.matchMedia("(prefers-reduced-motion: reduce)").matches) return;
@@ -77,13 +85,40 @@ export function CredenceInteractions({ children, bookingPersona = "General" }: {
     return () => { observer.disconnect(); elements?.forEach(element => element.classList.remove("credence-awaiting")); };
   }, []);
 
-  const open = () => { setStep(0); setData(initial); setMobilePath("free"); dialog.current?.showModal(); };
+  const open = () => {
+    if (submissionInFlight.current) return;
+    setStep(0); setData(initial); setMobilePath("free"); setDeliveryError(""); setCalendarUrl(""); dialog.current?.showModal();
+  };
   const next = () => { setStep(step === 2 && data.callType === "paid" ? 4 : step + 1); };
   const back = () => setStep(step === 4 && data.callType === "paid" ? 2 : step - 1);
-  useEffect(() => { if (dialog.current?.open) title.current?.focus(); }, [step]);
+  useEffect(() => { if (dialog.current?.open) title.current?.focus(); }, [step, calendarUrl]);
 
   function submit(event: FormEvent<HTMLFormElement>) {
     event.preventDefault();
+    if (submissionInFlight.current || calendarUrl) return;
+    setDeliveryError("");
+    const requiredByStep: Record<number, string[]> = {
+      1: [data.name, data.email, data.country],
+      2: [data.role === "Other" ? data.roleOther : data.role],
+      3: data.callType === "free" ? [data.revenue, data.timeInBusiness, data.goal === "Other" ? data.goalOther : data.goal] : [],
+      4: [data.challenge === "Something else" ? data.challengeOther : data.challenge],
+      5: [data.message],
+    };
+    const stepsToValidate = step === 5 ? [1, 2, 3, 4, 5] : [step];
+    for (const currentStep of stepsToValidate) {
+      if (requiredByStep[currentStep]?.some(value => !value.trim())) {
+        setStep(currentStep);
+        setDeliveryError("Please fill in all required fields.");
+        return;
+      }
+    }
+    if (step === 1 || step === 5) {
+      if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(data.email.trim()) || /[\r\n]/.test(data.name)) {
+        setStep(1);
+        setDeliveryError("Please enter a valid name and email address.");
+        return;
+      }
+    }
     if (step < 5) { next(); return; }
     const destination = new URL(data.callType === "paid" ? "https://www.coachli.co/blossomaffia/session/pick-my-brain-in-60-minutes?id=8446" : "https://calendly.com/growwithcredence/30min");
     if (data.callType === "free") { destination.searchParams.set("name", data.name); destination.searchParams.set("email", data.email); }
@@ -91,7 +126,36 @@ export function CredenceInteractions({ children, bookingPersona = "General" }: {
     if (data.callType === "free") context += ` | Rev: ${data.revenue} | Time: ${data.timeInBusiness} | Goal: ${data.goal === "Other" ? data.goalOther : data.goal}`;
     context += ` | Challenge: ${data.challenge === "Something else" ? data.challengeOther : data.challenge}`;
     destination.searchParams.set("a1", context);
-    window.location.assign(destination.toString());
+    const inquiry = [
+      "Clarity Session Application",
+      `Session: ${data.callType === "free" ? "Free Audit" : "Paid Strategy"}`,
+      `Service: ${bookingPersona}`,
+      `Country: ${data.country.trim()}`,
+      `Role: ${(data.role === "Other" ? data.roleOther : data.role).trim()}`,
+      ...(data.callType === "free" ? [
+        `Monthly revenue: ${data.revenue}`,
+        `Time in business: ${data.timeInBusiness}`,
+        `90-day goal: ${(data.goal === "Other" ? data.goalOther : data.goal).trim()}`,
+      ] : []),
+      `Challenge: ${(data.challenge === "Something else" ? data.challengeOther : data.challenge).trim()}`,
+      "", "Message:", data.message.trim(),
+    ].join("\n");
+
+    submissionInFlight.current = true;
+    startTransition(async () => {
+      try {
+        const result = await sendEmail({ name: data.name, email: data.email, inqueryMessage: inquiry });
+        if (result.success) {
+          setCalendarUrl(destination.toString());
+        } else {
+          setDeliveryError(result.message);
+        }
+      } catch {
+        setDeliveryError("We couldn't send your application. Please check your connection and try again. Your answers are still here.");
+      } finally {
+        submissionInFlight.current = false;
+      }
+    });
   }
 
   function select(label: string, key: keyof typeof initial, options: string[]) {
@@ -105,14 +169,23 @@ export function CredenceInteractions({ children, bookingPersona = "General" }: {
 
   return <BookingContext.Provider value={open}>
     <div ref={content}>{children}</div>
-    <dialog ref={dialog} className="credence-booking fixed inset-0 m-auto max-h-[90dvh] w-[min(896px,calc(100vw-32px))] rounded-3xl border border-[#3c2f21]/10 bg-[#fdfdfd] p-0 text-[#1a1a1a] shadow-2xl backdrop:bg-black/40 backdrop:backdrop-blur-sm [&_label]:block [&_label]:text-sm [&_label]:font-bold [&_label]:text-[#3c2f21]/80 [&_input:not([type=radio])]:mt-2 [&_input:not([type=radio])]:block [&_input:not([type=radio])]:w-full [&_input:not([type=radio])]:rounded-2xl [&_input:not([type=radio])]:border [&_input:not([type=radio])]:border-[#3c2f21]/10 [&_input:not([type=radio])]:bg-white [&_input:not([type=radio])]:px-5 [&_input:not([type=radio])]:py-4 [&_input:not([type=radio])]:text-base [&_input:not([type=radio])]:font-medium [&_select]:mt-2 [&_select]:block [&_select]:w-full [&_select]:rounded-2xl [&_select]:border [&_select]:border-[#3c2f21]/10 [&_select]:bg-white [&_select]:px-5 [&_select]:py-4 [&_select]:text-base [&_select]:font-medium [&_input[type=radio]]:mr-4 [&_input[type=radio]]:size-5 [&_input[type=radio]]:accent-[#ffbc16] [&_.credence-choice]:flex [&_.credence-choice]:items-start [&_.credence-choice]:rounded-2xl [&_.credence-choice]:border [&_.credence-choice]:border-[#3c2f21]/10 [&_.credence-choice]:bg-white [&_.credence-choice]:p-5 [&_.credence-choice]:text-base [&_.credence-choice:has(:checked)]:border-[#ffbc16] [&_.credence-choice:has(:checked)]:bg-[#ffbc16]/5 [&_input:focus-visible]:outline-2 [&_input:focus-visible]:outline-[#d28a2d] [&_select:focus-visible]:outline-2 [&_select:focus-visible]:outline-[#d28a2d]" aria-labelledby="booking-title" onClick={event => { if (event.target === dialog.current) { const bounds = dialog.current.getBoundingClientRect(); if (event.clientX < bounds.left || event.clientX > bounds.right || event.clientY < bounds.top || event.clientY > bounds.bottom) dialog.current.close(); } }}>
+    <dialog ref={dialog} className="credence-booking fixed inset-0 m-auto max-h-[90dvh] w-[min(896px,calc(100vw-32px))] rounded-3xl border border-[#3c2f21]/10 bg-[#fdfdfd] p-0 text-[#1a1a1a] shadow-2xl backdrop:bg-black/40 backdrop:backdrop-blur-sm [&_label]:block [&_label]:text-sm [&_label]:font-bold [&_label]:text-[#3c2f21]/80 [&_input:not([type=radio])]:mt-2 [&_input:not([type=radio])]:block [&_input:not([type=radio])]:w-full [&_input:not([type=radio])]:rounded-2xl [&_input:not([type=radio])]:border [&_input:not([type=radio])]:border-[#3c2f21]/10 [&_input:not([type=radio])]:bg-white [&_input:not([type=radio])]:px-5 [&_input:not([type=radio])]:py-4 [&_input:not([type=radio])]:text-base [&_input:not([type=radio])]:font-medium [&_select]:mt-2 [&_select]:block [&_select]:w-full [&_select]:rounded-2xl [&_select]:border [&_select]:border-[#3c2f21]/10 [&_select]:bg-white [&_select]:px-5 [&_select]:py-4 [&_select]:text-base [&_select]:font-medium [&_input[type=radio]]:mr-4 [&_input[type=radio]]:size-5 [&_input[type=radio]]:accent-[#ffbc16] [&_.credence-choice]:flex [&_.credence-choice]:items-start [&_.credence-choice]:rounded-2xl [&_.credence-choice]:border [&_.credence-choice]:border-[#3c2f21]/10 [&_.credence-choice]:bg-white [&_.credence-choice]:p-5 [&_.credence-choice]:text-base [&_.credence-choice:has(:checked)]:border-[#ffbc16] [&_.credence-choice:has(:checked)]:bg-[#ffbc16]/5 [&_input:focus-visible]:outline-2 [&_input:focus-visible]:outline-[#d28a2d] [&_select:focus-visible]:outline-2 [&_select:focus-visible]:outline-[#d28a2d]" aria-labelledby="booking-title" onCancel={event => { if (submissionInFlight.current) event.preventDefault(); }} onClick={event => { if (!submissionInFlight.current && event.target === dialog.current) { const bounds = dialog.current.getBoundingClientRect(); if (event.clientX < bounds.left || event.clientX > bounds.right || event.clientY < bounds.top || event.clientY > bounds.bottom) dialog.current.close(); } }}>
       <div className="bg-[#3c2f21] p-6 md:p-8 text-white relative">
-        <button type="button" aria-label="Close booking" className="absolute top-4 right-4 text-white/50 hover:text-white p-2" onClick={() => dialog.current?.close()}><X className="w-5 h-5" /></button>
+        <button type="button" aria-label="Close booking" disabled={isPending} className="absolute top-4 right-4 text-white/50 hover:text-white p-2" onClick={() => dialog.current?.close()}><X className="w-5 h-5" /></button>
         <h3 id="booking-title" className="text-xl font-black">Book Your Clarity Session</h3>
         <p className="text-white/60 text-xs font-medium mt-1">{step ? `Step ${displayStep} of ${totalSteps}` : "Select your pathway"}</p>
         {step > 0 && <div className="mt-6 h-1 bg-black/30 rounded-full overflow-hidden"><div className={`h-full bg-[#ffbc16] transition-all ${totalSteps === 4 ? ["w-0", "w-1/4", "w-1/2", "w-3/4", "w-full"][displayStep] : ["w-0", "w-1/5", "w-2/5", "w-3/5", "w-4/5", "w-full"][displayStep]}`} /></div>}
       </div>
-      <form onSubmit={submit} className="p-6 md:p-8 space-y-8">
+      <form onSubmit={submit} aria-busy={isPending} className="p-6 md:p-8 space-y-8">
+        {calendarUrl ? <div className="space-y-6 text-center">
+          <div role="status" className="space-y-3 rounded-2xl border border-green-200 bg-green-50 p-6 text-green-900">
+            <CheckCircle2 aria-hidden="true" className="mx-auto size-10 text-green-600" />
+            <h4 ref={title} tabIndex={-1} className="text-2xl font-black outline-none">Application sent!</h4>
+            <p className="text-sm leading-relaxed">Thanks for sharing your details. Choose a time on the calendar to complete your booking.</p>
+          </div>
+          <a href={calendarUrl} className="block rounded-2xl bg-[#ffbc16] px-6 py-4 text-sm font-black uppercase tracking-widest text-[#3c2f21] transition-opacity hover:opacity-90 focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-[#d28a2d]">Continue to Calendar</a>
+        </div> : <fieldset disabled={isPending} className="min-w-0 space-y-8">
+        <legend className="sr-only">Clarity session application</legend>
         <div className="text-center mb-4"><h4 ref={title} tabIndex={-1} className="text-2xl font-black text-[#3c2f21] outline-none">{titles[step]}</h4>
           {step === 0 && <p className="text-sm text-[#3c2f21]/60 mt-2 font-medium">Select the session that best aligns with your current needs.</p>}
           {step === 1 && <p className="text-sm text-[#3c2f21]/60 mt-2 font-medium">Please provide your primary contact details.</p>}
@@ -133,20 +206,35 @@ export function CredenceInteractions({ children, bookingPersona = "General" }: {
           </div>
         </>}
         {step === 1 && <div className={fieldClass}>
-          <label>Full Name<input required autoComplete="name" value={data.name} onChange={e => update("name", e.target.value)} /></label>
-          <label>Email<input required type="email" autoComplete="email" value={data.email} onChange={e => update("email", e.target.value)} /></label>
-          <label>Country<input required autoComplete="country-name" list="booking-countries" value={data.country} onChange={e => update("country", e.target.value)} /><datalist id="booking-countries">{["Nigeria", "United States", "United Kingdom", "Canada", "Ghana", "South Africa", "Kenya", "Australia"].map(country => <option key={country} value={country} />)}</datalist></label>
+          <label>Full Name<input required autoComplete="name" maxLength={100} value={data.name} onChange={e => update("name", e.target.value)} /></label>
+          <label>Email<input required type="email" autoComplete="email" maxLength={254} value={data.email} onChange={e => update("email", e.target.value)} /></label>
+          <label>Country<input required autoComplete="country-name" maxLength={100} list="booking-countries" value={data.country} onChange={e => update("country", e.target.value)} /><datalist id="booking-countries">{["Nigeria", "United States", "United Kingdom", "Canada", "Ghana", "South Africa", "Kenya", "Australia"].map(country => <option key={country} value={country} />)}</datalist></label>
         </div>}
-        {step === 2 && <fieldset className="space-y-4"><legend className="sr-only">What best describes you?</legend>{["Founder", "Business Owner", "Expert", "Other"].map(role => <label key={role} className="credence-choice"><input type="radio" name="role" value={role} checked={data.role === role} onChange={e => update("role", e.target.value)} />{role}</label>)}{data.role === "Other" && <label>Please specify<input required value={data.roleOther} onChange={e => update("roleOther", e.target.value)} /></label>}</fieldset>}
+        {step === 2 && <fieldset className="space-y-4"><legend className="sr-only">What best describes you?</legend>{["Founder", "Business Owner", "Expert", "Other"].map(role => <label key={role} className="credence-choice"><input type="radio" name="role" value={role} checked={data.role === role} onChange={e => update("role", e.target.value)} />{role}</label>)}{data.role === "Other" && <label>Please specify<input required maxLength={200} value={data.roleOther} onChange={e => update("roleOther", e.target.value)} /></label>}</fieldset>}
         {step === 3 && <div className="space-y-6">
           {select("What is your current monthly revenue?", "revenue", ["Under $1k", "$1k to $5k", "$5k to $10k", "$10k to $50k", "$50k and above"])}
           {select("How long have you been in business?", "timeInBusiness", ["Less than 6 months", "6 to 12 months", "1 to 3 years", "3 years and above"])}
           {select("What's your most important goal in the next 90 days?", "goal", ["Attract better clients", "Raise investment", "Build sustainable visibility", "Increase revenue", "Other"])}
-          {data.goal === "Other" && <label>Please specify<input required value={data.goalOther} onChange={e => update("goalOther", e.target.value)} /></label>}
+          {data.goal === "Other" && <label>Please specify<input required maxLength={200} value={data.goalOther} onChange={e => update("goalOther", e.target.value)} /></label>}
         </div>}
-        {step === 4 && <fieldset className="space-y-4"><legend className="sr-only">What&apos;s getting in the way?</legend>{challenges.map(challenge => <label key={challenge} className="credence-choice"><input type="radio" name="challenge" checked={data.challenge === challenge} value={challenge} onChange={e => update("challenge", e.target.value)} />{challenge}</label>)}{data.challenge === "Something else" && <label>Describe your challenge<input required value={data.challengeOther} onChange={e => update("challengeOther", e.target.value)} /></label>}</fieldset>}
-        {step === 5 && <p className="text-[#3c2f21]/70 text-center font-medium">{data.callType === "free" ? "We review every application personally. Proceed to calendar to select a time." : "Click submit below to access the calendar and secure your Private Consultancy."}</p>}
-        {step > 0 && <div className="flex gap-4 pt-6 border-t border-black/5"><button type="button" onClick={back} className="px-8 py-4 rounded-2xl font-bold text-sm border border-[#3c2f21]/10 text-[#3c2f21] hover:bg-black/5">Back</button><button type="submit" disabled={!canContinue} className={step === 5 ? "flex-1 bg-[#ffbc16] text-[#3c2f21] py-4 rounded-2xl font-black text-sm uppercase tracking-widest" : primaryButton}>{step === 5 ? "Submit" : "Continue"}</button></div>}
+        {step === 4 && <fieldset className="space-y-4"><legend className="sr-only">What&apos;s getting in the way?</legend>{challenges.map(challenge => <label key={challenge} className="credence-choice"><input type="radio" name="challenge" checked={data.challenge === challenge} value={challenge} onChange={e => update("challenge", e.target.value)} />{challenge}</label>)}{data.challenge === "Something else" && <label>Describe your challenge<input required maxLength={200} value={data.challengeOther} onChange={e => update("challengeOther", e.target.value)} /></label>}</fieldset>}
+        {step === 5 && <div className={fieldClass}>
+          <p className="text-[#3c2f21]/70 text-center font-medium">Share a little more about what you need. After sending your application, continue to the calendar to choose a time.</p>
+          <label htmlFor="booking-message">Message
+            <textarea id="booking-message" name="message" required maxLength={3000} rows={5} value={data.message} onChange={event => update("message", event.target.value)} placeholder="Tell us about your business, what you'd like help with, and what you hope to get from this session." aria-describedby="booking-message-hint" className="mt-2 block w-full resize-y rounded-2xl border border-[#3c2f21]/10 bg-white px-5 py-4 text-base font-medium placeholder:text-[#737373] focus:border-[#ffbc16] focus:outline-none focus:ring-1 focus:ring-[#ffbc16]" />
+          </label>
+          <p id="booking-message-hint" className="text-xs text-[#3c2f21]/60">Up to 3,000 characters. Your message and application details will be sent to our team.</p>
+        </div>}
+        <div role="alert" aria-atomic="true">{deliveryError && <p className="rounded-xl border border-red-200 bg-red-50 p-4 text-sm leading-relaxed text-red-800">{deliveryError}</p>}</div>
+        {step > 0 && <div className="flex flex-col-reverse gap-4 border-t border-black/5 pt-6 sm:flex-row"><button type="button" onClick={() => { setDeliveryError(""); back(); }} className="px-8 py-4 rounded-2xl font-bold text-sm border border-[#3c2f21]/10 text-[#3c2f21] enabled:hover:bg-black/5 disabled:cursor-wait disabled:opacity-50">Back</button><button type="submit" disabled={!canContinue || isPending} aria-busy={isPending} aria-label={isPending ? "Sending application" : step === 5 ? "Send Application" : "Continue"} className={step === 5 ? "grid flex-1 place-items-center rounded-2xl bg-[#ffbc16] px-4 py-4 text-sm font-black uppercase tracking-widest text-[#3c2f21] transition-[opacity,box-shadow] duration-200 enabled:hover:shadow-lg disabled:cursor-wait disabled:opacity-70 motion-reduce:transition-none" : primaryButton}>
+          {step === 5 ? <>
+            <span aria-hidden="true" className={`col-start-1 row-start-1 transition-opacity duration-200 motion-reduce:transition-none ${isPending ? "opacity-0" : "opacity-100"}`}>Send Application</span>
+            <span aria-hidden="true" className={`col-start-1 row-start-1 inline-flex items-center justify-center gap-2 transition-opacity duration-200 motion-reduce:transition-none ${isPending ? "opacity-100" : "opacity-0"}`}>
+              {isPending && <LoaderCircle className="size-5 shrink-0 animate-spin motion-reduce:animate-none" />} Sending...
+            </span>
+          </> : "Continue"}
+        </button></div>}
+        </fieldset>}
       </form>
     </dialog>
   </BookingContext.Provider>;
