@@ -61,6 +61,12 @@ export function Header({
             Results
           </Link>
           <Link
+            className="transition-colors duration-300 hover:text-[#ffbc16] opacity-80 hover:opacity-100 relative pb-1"
+            href="/projects" scroll={false}
+          >
+            Projects
+          </Link>
+          <Link
             aria-current={currentPage === "contact" ? "page" : undefined}
             className={`transition-colors duration-300 hover:text-[#ffbc16] relative pb-1 ${currentPage === "contact" ? "text-[#ffbc16]" : "opacity-80 hover:opacity-100"}`}
             href="/contact"

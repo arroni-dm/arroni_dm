@@ -8,7 +8,7 @@ import type { BookingPersona, SystemSlug } from "./systems/system-data";
 
 const BookingContext = createContext<() => void>(() => {});
 
-// আপনার নতুন সার্ভিস লিঙ্ক এবং URL স্লাগসমূহ
+// নতুন সার্ভিস লিঙ্কসমূহ
 const serviceLinks = [
   ["System 01: Google Ads Setup with Conversion Tracking", "google-ads-setup"],
   ["System 02: Google Ads Optimization & Management", "google-ads-management"],
@@ -17,7 +17,15 @@ const serviceLinks = [
   ["System 05: Looker Studio Reporting", "looker-studio"]
 ];
 
-const navigation = [["Home", "/"], ["Services", "/#services"], ["The Gap", "/#gap"], ["Results", "/#proof"], ["Contact", "/contact"]];
+// আপনার মেইন নেভিগেশন লিঙ্ক
+const navigation = [
+  ["Home", "/"], 
+  ["Services", "/#services"], 
+  ["The Gap", "/#gap"], 
+  ["Results", "/#proof"], 
+  ["Projects", "/projects"], 
+  ["Contact", "/contact"]
+];
 
 export function BookingButton({ children, className, tabIndex }: { children: ReactNode; className?: string; tabIndex?: number }) {
   const open = useContext(BookingContext);
@@ -33,6 +41,29 @@ export function ServicesNavigation({ currentSystem }: { currentSystem?: SystemSl
       </div>
     </div>
   </div>;
+}
+
+// ডেস্কটপ নেভিগেশন বার রেন্ডার করার নতুন কম্পোনেন্ট
+export function DesktopNavigation({ currentSystem }: { currentSystem?: SystemSlug }) {
+  return (
+    <nav className="hidden min-[1000px]:flex items-center gap-8 font-semibold text-[#3c2f21]">
+      {navigation.map(([label, href]) => {
+        if (label === "Services") {
+          return <ServicesNavigation key={label} currentSystem={currentSystem} />;
+        }
+        return (
+          <Link
+            key={label}
+            href={href}
+            scroll={href.includes("#") ? false : undefined}
+            className="hover:text-[#ffbc16] transition-colors duration-300 opacity-80 hover:opacity-100"
+          >
+            {label}
+          </Link>
+        );
+      })}
+    </nav>
+  );
 }
 
 export function MobileNavigation() {
