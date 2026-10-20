@@ -4,6 +4,9 @@ import Link from "next/link";
 import { ArrowLeft, CheckCircle2 } from "lucide-react";
 import { Header, Footer } from "@/app/projects/page";
 
+// Next.js 16 Partial Prerendering / Instant Shell Fix
+export const instant = false;
+
 interface ProjectDetail {
   slug: string;
   title: string;
@@ -79,6 +82,14 @@ const projectsMap: Record<string, ProjectDetail> = {
     ],
   },
 };
+
+export async function generateStaticParams() {
+  return [
+    { slug: "ecoshop" },
+    { slug: "nexus-global" },
+    { slug: "healthcore" },
+  ];
+}
 
 export async function generateMetadata({
   params,
