@@ -1338,33 +1338,33 @@ export function Footer() {
             </h5>
             <Link
               className="text-sm text-white/60 hover:text-[#ffbc16] transition-colors duration-300"
-              href="/systems/linkedin/"
+              href="/systems/google-ads-setup/"
             >
-              System 01: Google Ads Setup & Management
+              System 01: Google Ads Setup with Conversion Tracking
             </Link>
             <Link
               className="text-sm text-white/60 hover:text-[#ffbc16] transition-colors duration-300"
-              href="/systems/social/"
+              href="/systems/google-ads-management/"
             >
-              System 02: Meta Ads Setup & Management
+              System 02: Google Ads Optimization & Management
             </Link>
             <Link
               className="text-sm text-white/60 hover:text-[#ffbc16] transition-colors duration-300"
-              href="/systems/email/"
+              href="/systems/meta-ads-setup/"
             >
-              System 03: Google Ads & Google Analytics Tracking Setup
+              System 03: Meta Ads Setup with Pixel & CAPI
             </Link>
             <Link
               className="text-sm text-white/60 hover:text-[#ffbc16] transition-colors duration-300"
-              href="/systems/web/"
+              href="/systems/meta-ads-management/"
             >
-              System 04: Meta Pixel & CAPI Installation & Setup
+              System 04: Meta Ads Optimization & Management
             </Link>
             <Link
               className="text-sm text-white/60 hover:text-[#ffbc16] transition-colors duration-300"
-              href="/systems/web/"
+              href="/systems/looker-studio/"
             >
-              System 05: Test
+              System 05: Looker Studio Reporting
             </Link>
           </div>
         </div>
