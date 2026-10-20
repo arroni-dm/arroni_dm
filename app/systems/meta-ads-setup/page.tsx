@@ -6,7 +6,7 @@ import { ActionPipeline } from "@/components/credence/systems/action-pipeline";
 import { SystemPhilosophy } from "@/components/credence/systems/system-philosophy";
 import { SystemCTA } from "@/components/credence/systems/system-cta";
 
-export const metadata: Metadata = { title: "Social Media System | Credence", description: social.description };
+export const metadata: Metadata = { title: "Meta Ads Setup", description: social.description };
 
 export default function SocialMediaPage() {
   return (

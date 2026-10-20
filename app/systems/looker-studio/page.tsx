@@ -6,7 +6,7 @@ import { ActionPipeline } from "@/components/credence/systems/action-pipeline";
 import { SystemPhilosophy } from "@/components/credence/systems/system-philosophy";
 import { SystemCTA } from "@/components/credence/systems/system-cta";
 
-export const metadata: Metadata = { title: "Website System | Credence", description: web.description };
+export const metadata: Metadata = { title: "Looker Studio", description: web.description };
 
 export default function WebsitePage() {
   return (

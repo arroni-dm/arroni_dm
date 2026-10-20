@@ -6,7 +6,7 @@ import { ActionPipeline } from "@/components/credence/systems/action-pipeline";
 import { SystemPhilosophy } from "@/components/credence/systems/system-philosophy";
 import { SystemCTA } from "@/components/credence/systems/system-cta";
 
-export const metadata: Metadata = { title: "Email System | Credence", description: email.description };
+export const metadata: Metadata = { title: "Google Ads Setup", description: email.description };
 
 export default function EmailPage() {
   return (

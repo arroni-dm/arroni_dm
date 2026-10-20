@@ -5,7 +5,7 @@ import { SystemHero } from "@/components/credence/systems/system-hero";
 import { ActionPipeline } from "@/components/credence/systems/action-pipeline";
 import { SystemPhilosophy } from "@/components/credence/systems/system-philosophy";
 
-export const metadata: Metadata = { title: "LinkedIn System | Credence", description: linkedin.description };
+export const metadata: Metadata = { title: "Google Ads Management", description: linkedin.description };
 
 export default function LinkedInPage() {
   return (
