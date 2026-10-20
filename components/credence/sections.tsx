@@ -1340,25 +1340,25 @@ export function Footer() {
               className="text-sm text-white/60 hover:text-[#ffbc16] transition-colors duration-300"
               href="/systems/linkedin/"
             >
-              System 01: LinkedIn
+              System 01: Google Ads Setup & Management
             </Link>
             <Link
               className="text-sm text-white/60 hover:text-[#ffbc16] transition-colors duration-300"
               href="/systems/social/"
             >
-              System 02: Social Media
+              System 02: Meta Ads Setup & Management
             </Link>
             <Link
               className="text-sm text-white/60 hover:text-[#ffbc16] transition-colors duration-300"
               href="/systems/email/"
             >
-              System 03: Email
+              System 03: Google Ads & Google Analytics Tracking Setup
             </Link>
             <Link
               className="text-sm text-white/60 hover:text-[#ffbc16] transition-colors duration-300"
               href="/systems/web/"
             >
-              System 04: Website
+              System 04: Meta Pixel & CAPI Installation & Setup
             </Link>
             <Link
               className="text-sm text-white/60 hover:text-[#ffbc16] transition-colors duration-300"
@@ -1370,7 +1370,7 @@ export function Footer() {
         </div>
         <div className="mt-16 pt-8 border-t border-white/5 flex flex-col md:flex-row justify-between items-center gap-4">
           <span className="text-sm text-white/30">
-            © 2026 Growth With Credence.
+            © 2026 Growth With Roni.
           </span>
           <a
             href="mailto:arroni.dm@gmail.com"

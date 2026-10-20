@@ -7,10 +7,16 @@ import { sendEmail } from "@/actions/contact";
 import type { BookingPersona, SystemSlug } from "./systems/system-data";
 
 const BookingContext = createContext<() => void>(() => {});
+
+// আপনার নতুন সার্ভিস লিঙ্ক এবং URL স্লাগসমূহ
 const serviceLinks = [
-  ["System 01: LinkedIn", "linkedin"], ["System 02: Social Media", "social"],
-  ["System 03: Email", "email"], ["System 04: Website", "web"],["System 05: Test", "test"]
+  ["System 01: Google Ads Setup with Conversion Tracking", "google-ads-setup"],
+  ["System 02: Google Ads Optimization & Management", "google-ads-management"],
+  ["System 03: Meta Ads Setup with Pixel & CAPI", "meta-ads-setup"],
+  ["System 04: Meta Ads Optimization & Management", "meta-ads-management"],
+  ["System 05: Looker Studio Reporting", "looker-studio"]
 ];
+
 const navigation = [["Home", "/"], ["Services", "/#services"], ["The Gap", "/#gap"], ["Results", "/#proof"], ["Contact", "/contact"]];
 
 export function BookingButton({ children, className, tabIndex }: { children: ReactNode; className?: string; tabIndex?: number }) {
