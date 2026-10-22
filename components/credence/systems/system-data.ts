@@ -45,7 +45,7 @@ export const social: SystemContent = {
 };
 
 export const email: SystemContent = {
-  slug: "email", number: "03", name: "Email", persona: "Email",
+  slug: "email", number: "01", name: "Email", persona: "Email",
   description: "Social media can disappear tomorrow. Your email list cannot. We build the system that moves your followers into a list you own. Then we turn that list into a revenue engine.",
   pipelineLabel: "Action Pipeline",
   pipelineIntro: "See the exact sequence we execute to move from renting attention to owning a highly profitable retention ecosystem.",
