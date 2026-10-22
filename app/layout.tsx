@@ -1,7 +1,10 @@
+import { Suspense } from "react";
+import { Navbar } from "@/components/credence/navbar";
 import { SmoothScrollProvider } from "@/providers/smooth-scroll-provider";
 import type { Metadata } from "next";
 import { Geist, Geist_Mono } from "next/font/google";
 import "./globals.css";
+import "./credence.css";
 
 const geistSans = Geist({
   variable: "--font-geist-sans",
@@ -29,7 +32,12 @@ export default function RootLayout({ children }: LayoutProps<"/">) {
         className="min-h-full flex flex-col"
         suppressHydrationWarning={true}
       >
-        <SmoothScrollProvider>{children}</SmoothScrollProvider>
+        <SmoothScrollProvider>
+          <Suspense fallback={null}>
+            <Navbar />
+          </Suspense>
+          {children}
+        </SmoothScrollProvider>
       </body>
     </html>
   );

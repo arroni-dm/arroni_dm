@@ -1,99 +1,10 @@
 import Image from "next/image";
 import Link from "next/link";
 import { GapCarousel } from "./gap-carousel";
-import {
-  BookingButton,
-  MobileNavigation,
-  ServicesNavigation,
-} from "./interactions";
-import type { SystemSlug } from "./systems/system-data";
+import { BookingButton } from "./interactions";
 import { Testimonials } from "./testimonials";
 
 // Layout, copy, responsive classes, and SVGs match the public reference HTML.
-
-export function Header({
-  currentPage = "home",
-  currentSystem,
-}: {
-  currentPage?: "home" | "contact" | "systems";
-  currentSystem?: SystemSlug;
-}) {
-  return (
-    <header className="fixed top-6 left-1/2 -translate-x-1/2 z-50 w-full max-w-5xl px-4 transition-all duration-300">
-      <nav className="flex items-center justify-between px-4 sm:px-6 py-3 bg-white/90 dark:bg-[#452213]/90 backdrop-blur-xl border border-black/5 dark:border-white/10 rounded-full shadow-sm transition-colors duration-500">
-        <Link
-          className="flex items-center gap-2 cursor-pointer transition-transform hover:scale-105 duration-300"
-          href="/"
-        >
-          <Image
-            unoptimized
-            preload
-            alt="Credence Logo"
-            width={220}
-            height={55}
-            decoding="async"
-            className="h-10 md:h-12 w-auto object-contain drop-shadow-sm dark:invert"
-            src="/credence/credence-logo.png"
-          />
-        </Link>
-        <div className="hidden min-[1000px]:flex items-center gap-8 text-sm font-bold text-[#1a1a1a] dark:text-[#F5F5F5]">
-          <Link
-            aria-current={currentPage === "home" ? "page" : undefined}
-            className={`transition-colors duration-300 hover:text-[#ffbc16] relative pb-1 ${currentPage === "home" ? "text-[#ffbc16]" : "opacity-80 hover:opacity-100"}`}
-            href="/"
-          >
-            Home
-            {currentPage === "home" && (
-              <div className="absolute bottom-0 left-0 w-full h-[2px] bg-[#ffbc16]" />
-            )}
-          </Link>
-          <ServicesNavigation currentSystem={currentSystem} />
-          <Link
-            className="transition-colors duration-300 hover:text-[#ffbc16] opacity-80 hover:opacity-100 relative pb-1"
-            href="/#gap" scroll={false}
-          >
-            The Gap
-          </Link>
-          <Link
-            className="transition-colors duration-300 hover:text-[#ffbc16] opacity-80 hover:opacity-100 relative pb-1"
-            href="/#proof" scroll={false}
-          >
-            Results
-          </Link>
-          <Link
-            className="transition-colors duration-300 hover:text-[#ffbc16] opacity-80 hover:opacity-100 relative pb-1"
-            href="/projects" scroll={false}
-          >
-            Projects
-          </Link>
-          <Link
-            aria-current={currentPage === "contact" ? "page" : undefined}
-            className={`transition-colors duration-300 hover:text-[#ffbc16] relative pb-1 ${currentPage === "contact" ? "text-[#ffbc16]" : "opacity-80 hover:opacity-100"}`}
-            href="/contact"
-          >
-            Contact
-            {currentPage === "contact" && (
-              <div className="absolute bottom-0 left-0 w-full h-[2px] bg-[#ffbc16]" />
-            )}
-          </Link>
-        </div>
-        <div className="flex items-center gap-3 sm:gap-4 w-auto justify-end shrink-0">
-          <MobileNavigation />
-          <div className="hidden min-[1000px]:block">
-            <div className="">
-              <BookingButton
-                className="px-5 py-2 text-sm font-black bg-[#ffbc16] text-[#3c2f21] rounded-full hover:shadow-[0_4px_20px_0_rgba(255,188,22,0.4)] transition-all block whitespace-nowrap uppercase tracking-widest"
-                tabIndex={0}
-              >
-                Book a Free Audit Session
-              </BookingButton>
-            </div>
-          </div>
-        </div>
-      </nav>
-    </header>
-  );
-}
 
 export function Hero() {
   return (
@@ -132,7 +43,7 @@ export function Hero() {
       <div className="max-w-5xl mx-auto flex flex-col items-center relative z-10 w-full mb-0">
         <div className="inline-flex items-center gap-2 px-4 py-1.5 mb-6 text-sm font-medium rounded-full bg-black/5 dark:bg-white/5 border border-black/5 dark:border-white/10 animate-in fade-in slide-in-from-top-4 duration-700 transition-colors duration-500">
           <span className="w-2 h-2 rounded-full bg-[#ffbc16]"></span>
-          <span className="opacity-80">Let's convert your ad spend into a mesurable profit!</span>
+          <span className="opacity-80">Let&apos;s convert your ad spend into a mesurable profit!</span>
         </div>
         <h1 className="text-5xl sm:text-6xl md:text-[5.5rem] font-bold tracking-tighter font-outfit leading-[1.05] mb-4 md:mb-6 animate-in fade-in slide-in-from-bottom-8 duration-700 delay-100 max-w-5xl mx-auto text-center text-balance">
           Anyone can setup and run{" "}
@@ -484,7 +395,7 @@ export function Manifesto() {
             data-reveal=""
           >
             <blockquote className="font-serif italic text-2xl md:text-4xl lg:text-5xl text-[#ffbc16] leading-[1.3] max-w-4xl mx-auto tracking-tight drop-shadow-[0_0_30px_rgba(255,188,22,0.15)]">
-              &quot;Growth isn't about spending more on ads; it’s about optimizing every step of the funnel.&quot;
+              &quot;Growth isn&apos;t about spending more on ads; it’s about optimizing every step of the funnel.&quot;
             </blockquote>
           </div>
         </div>
@@ -826,7 +737,7 @@ export function Founder() {
           <h3 className="text-3xl md:text-3xl font-bold font-outfit text-[#3c2f21] dark:text-[#F5F5F5] mb-6 leading-tight">
             &quot;I Take Your Business as My Own.{" "}
             <span className="text-[#a45f41] dark:text-[#cb9678]">
-              If You're Satisfied, I'll Proceed with the Delivery
+              If You&apos;re Satisfied, I&apos;ll Proceed with the Delivery
             </span>
             &quot;
           </h3>
@@ -836,8 +747,8 @@ export function Founder() {
             <br />
             <br />
             Great products deserve predictable growth, not guesswork. 
-            The market doesn't just reward spending money on ads. It rewards precise targeting and conversion tracking. 
-            That's the gap I close.
+            The market doesn&apos;t just reward spending money on ads. It rewards precise targeting and conversion tracking. 
+            That&apos;s the gap I close.
           </p>
           <div className="flex items-center gap-5 mt-auto pt-8 border-t border-black/10 dark:border-white/10">
             <div className="relative w-14 h-14 rounded-full overflow-hidden shadow-lg shrink-0 border-2 border-transparent dark:border-white/10 bg-[#3c2f21]">
@@ -1209,7 +1120,7 @@ export function FrequentlyAskedQuestions() {
               </span>
             </summary>
             <div className="px-6 md:px-8 pb-6 md:pb-8 pt-0 text-lg opacity-80 leading-relaxed font-medium text-[#3c2f21] dark:text-[#F5F5F5]/90">
-              I'll need partner/admin access to your Google Ads, Meta Business Manager, GA4, GTM, and website backend (or Shopify/WordPress). 
+              I&apos;ll need partner/admin access to your Google Ads, Meta Business Manager, GA4, GTM, and website backend (or Shopify/WordPress). 
               I provide a simple onboarding checklist to complete this process smoothly.
             </div>
           </details>
@@ -1260,7 +1171,7 @@ export function FinalCallToAction() {
             READY TO GET STARTED RIGHT NOW?
           </h2>
           <p className="text-lg md:text-xl text-white/70 max-w-2xl mx-auto mb-10">
-            Let's meet on call to discuss your project today!
+            Let&apos;s meet on call to discuss your project today!
           </p>
           <div className="flex flex-col items-center justify-center gap-4 w-full">
             <div className="">

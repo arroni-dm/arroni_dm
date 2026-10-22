@@ -1,8 +1,9 @@
 import type { Metadata } from "next";
 import { notFound } from "next/navigation";
+import Image from "next/image";
 import Link from "next/link";
 import { ArrowLeft, CheckCircle2 } from "lucide-react";
-import { Header, Footer } from "@/app/projects/page";
+import { Footer } from "@/components/credence/projects-footer";
 
 // Next.js 16 Partial Prerendering / Instant Shell Fix
 export const instant = false;
@@ -116,7 +117,6 @@ export default async function ProjectDetailPage({
 
   return (
     <div className="bg-[#f8f9fa] min-h-screen text-[#3c2f21]">
-      <Header currentPage="projects" />
 
       <main className="pt-36 pb-20 px-4 sm:px-6 lg:px-8 max-w-5xl mx-auto">
         <Link
@@ -141,7 +141,7 @@ export default async function ProjectDetailPage({
           </h1>
 
           <div className="relative h-96 w-full rounded-2xl overflow-hidden shadow-inner">
-            <img src={project.image} alt={project.title} className="w-full h-full object-cover" />
+            <Image src={project.image} alt={project.title} fill sizes="(max-width: 1023px) 100vw, 1024px" preload className="w-full h-full object-cover" />
           </div>
 
           <div className="space-y-4">

@@ -1,6 +1,6 @@
 import type { Metadata } from "next";
 import localFont from "next/font/local";
-import { Header, Footer } from "@/components/credence/sections";
+import { Footer } from "@/components/credence/sections";
 import { CredenceInteractions } from "@/components/credence/interactions";
 import { ContactForm } from "@/components/credence/contact-form";
 import { ContactFooterReveal } from "@/components/credence/contact-footer-reveal";
@@ -19,7 +19,6 @@ export default function ContactPage() {
       <CredenceInteractions>
         <a href="#contact-content" className="fixed -top-24 left-6 z-[110] rounded-full bg-[#ffbc16] px-6 py-3 text-[#3c2f21] focus:top-4">Skip to content</a>
         <div className="flex min-h-screen flex-col">
-          <Header currentPage="contact" />
           <main id="contact-content" className="relative flex flex-1 scroll-mt-[120px] flex-col items-center justify-center overflow-hidden px-4 pt-32 pb-24 sm:px-6">
             <div aria-hidden="true" className="pointer-events-none absolute top-1/2 left-1/2 size-[600px] -translate-x-1/2 -translate-y-1/2 rounded-full bg-[#ffbc16]/5 blur-[120px]" />
             <div className="relative z-10 w-full max-w-lg">
