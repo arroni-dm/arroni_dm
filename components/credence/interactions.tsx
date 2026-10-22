@@ -216,7 +216,13 @@ const challengesByPersona: Record<BookingPersona, string[]> = {
     "People visit but don't convert",
     "My site is outdated and working against me",
   ],
+  Meta: [
+    "My site doesn't make me look credible",
+    "People visit but don't convert",
+    "My site is outdated and working against me",
+  ],
 };
+
 const initial = {
   callType: "free",
   name: "",
@@ -243,7 +249,10 @@ export function CredenceInteractions({
   children: ReactNode;
   bookingPersona?: BookingPersona;
 }) {
-  const challenges = [...challengesByPersona[bookingPersona], "Something else"];
+  // Safe lookup checking for persona key exists in challengesByPersona
+  const targetPersona = bookingPersona && challengesByPersona[bookingPersona] ? bookingPersona : "General";
+  const challenges = [...(challengesByPersona[targetPersona] ?? []), "Something else"];
+
   const dialog = useRef<HTMLDialogElement>(null);
   const content = useRef<HTMLDivElement>(null);
   const [step, setStep] = useState(0);
@@ -254,6 +263,7 @@ export function CredenceInteractions({
   const [deliveryError, setDeliveryError] = useState("");
   const [calendarUrl, setCalendarUrl] = useState("");
   const title = useRef<HTMLHeadingElement>(null);
+
   const update = (key: keyof typeof initial, value: string) => {
     setData((previous) => ({ ...previous, [key]: value }));
     setDeliveryError("");
@@ -356,7 +366,7 @@ export function CredenceInteractions({
       destination.searchParams.set("name", data.name);
       destination.searchParams.set("email", data.email);
     }
-    let context = `Type: ${data.callType.toUpperCase()} | Context: ${bookingPersona} | Country: ${data.country} | Role: ${data.role === "Other" ? data.roleOther : data.role}`;
+    let context = `Type: ${data.callType.toUpperCase()} | Context: ${targetPersona} | Country: ${data.country} | Role: ${data.role === "Other" ? data.roleOther : data.role}`;
     if (data.callType === "free")
       context += ` | Rev: ${data.revenue} | Time: ${data.timeInBusiness} | Goal: ${data.goal === "Other" ? data.goalOther : data.goal}`;
     context += ` | Challenge: ${data.challenge === "Something else" ? data.challengeOther : data.challenge}`;
@@ -364,7 +374,7 @@ export function CredenceInteractions({
     const inquiry = [
       "Clarity Session Application",
       `Session: ${data.callType === "free" ? "Free Audit" : "Paid Strategy"}`,
-      `Service: ${bookingPersona}`,
+      `Service: ${targetPersona}`,
       `Country: ${data.country.trim()}`,
       `Role: ${(data.role === "Other" ? data.roleOther : data.role).trim()}`,
       ...(data.callType === "free"
