@@ -15,7 +15,7 @@ export type SystemContent = {
 };
 
 export const linkedin: SystemContent = {
-  slug: "linkedin", number: "01", name: "LinkedIn", persona: "LinkedIn",
+  slug: "linkedin", number: "04", name: "LinkedIn", persona: "LinkedIn",
   description: "Your LinkedIn profile is either working for you or against you. Right now, it's probably not working hard enough. Credence closes the gap.",
   pipelineLabel: "Action Pipeline",
   pipelineIntro: "Watch how we systematically strip away invisibility and establish market dominance.",
@@ -30,7 +30,7 @@ export const linkedin: SystemContent = {
 };
 
 export const social: SystemContent = {
-  slug: "social", number: "02", name: "Social Media", persona: "Social",
+  slug: "social", number: "03", name: "Social Media", persona: "Social",
   description: '"Content creation" is a trap. You don\'t need more content. You need a narrative. We build social ecosystems that turn silent watchers into high-value clients.',
   pipelineLabel: "Action Pipeline",
   pipelineIntro: "Watch how we systematically transition your brand from isolated posts to a globally dominant social ecosystem.",
@@ -60,7 +60,7 @@ export const email: SystemContent = {
 };
 
 export const web: SystemContent = {
-  slug: "web", number: "04", name: "Website", persona: "Web",
+  slug: "web", number: "05", name: "Website", persona: "Web",
   description: "Most websites are digital brochures. They look fine. They do nothing. People land on them and leave without buying. We build websites that sell.",
   pipelineLabel: "Architecture Blueprint",
   pipelineIntro: "See the exact architecture we build to transform an outdated online presence into dominating Conversion Real Estate.",
