@@ -1,5 +1,5 @@
-export type SystemSlug = "linkedin" | "social" | "email" | "web";
-export type BookingPersona = "General" | "LinkedIn" | "Social" | "Email" | "Web";
+export type SystemSlug = "linkedin" | "social" | "email" | "web" | "meta";
+export type BookingPersona = "General" | "LinkedIn" | "Social" | "Email" | "Web" | "Meta";
 
 export type SystemContent = {
   slug: SystemSlug;
@@ -15,7 +15,22 @@ export type SystemContent = {
 };
 
 export const linkedin: SystemContent = {
-  slug: "linkedin", number: "04", name: "LinkedIn", persona: "LinkedIn",
+  slug: "linkedin", number: "02", name: "LinkedIn", persona: "LinkedIn",
+  description: "Your LinkedIn profile is either working for you or against you. Right now, it's probably not working hard enough. Credence closes the gap.",
+  pipelineLabel: "Action Pipeline",
+  pipelineIntro: "Watch how we systematically strip away invisibility and establish market dominance.",
+  stages: [
+    { name: "The Reset", focus: "First Impressions & Profile Architecture.", content: "We rebuild your profile from scratch. We make sure the first thing someone reads about you makes them want to know more." },
+    { name: "The 30-Day Sprint", focus: "Building Trust & Proving Expertise.", content: "12 posts that prove your expertise and build trust with the people who matter. We write them. You approve them." },
+    { name: "Full Management", focus: "Network Growth & Consistent Engagement.", content: "We run your LinkedIn completely. 20+ posts per month. Network growth. Inbox management. You focus on your business. We focus on your presence." },
+    { name: "Elite Advisory", focus: "Global Industry Leadership.", content: "PR. Speaking opportunities. Industry positioning. We turn your name into one your industry cannot ignore." },
+    { name: "Roni Test", focus: "Global Industry Leadership.", content: "PR. Speaking opportunities. Industry positioning. We turn your name into one your industry cannot ignore." },
+  ],
+  philosophy: { label: "Founder's Logic", heading: '"If someone can\'t immediately see your value, they will assume you have none."' },
+};
+
+export const meta: SystemContent = {
+  slug: "meta", number: "04", name: "Meta", persona: "Meta",
   description: "Your LinkedIn profile is either working for you or against you. Right now, it's probably not working hard enough. Credence closes the gap.",
   pipelineLabel: "Action Pipeline",
   pipelineIntro: "Watch how we systematically strip away invisibility and establish market dominance.",
