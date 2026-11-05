@@ -493,7 +493,7 @@ export function Services() {
               <div className="mt-auto pt-6 border-t border-black/5 dark:border-white/10 w-full group-hover:border-[#a45f41]/20 transition-colors">
                 <Link
                   className="flex justify-between items-center w-full"
-                  href="/systems/linkedin/"
+                  href="/systems/google-ads-setup"
                 >
                   <span className="font-bold text-[#3c2f21] dark:text-[#F5F5F5] group-hover:text-[#a45f41] transition-colors">
                     See the System
@@ -554,7 +554,7 @@ export function Services() {
               <div className="mt-auto pt-6 border-t border-black/5 dark:border-white/10 w-full group-hover:border-[#a45f41]/20 transition-colors">
                 <Link
                   className="flex justify-between items-center w-full"
-                  href="/systems/social/"
+                  href="/systems/meta-ads-setup"
                 >
                   <span className="font-bold text-[#3c2f21] dark:text-[#F5F5F5] group-hover:text-[#a45f41] transition-colors">
                     See the System
@@ -615,7 +615,7 @@ export function Services() {
               <div className="mt-auto pt-6 border-t border-black/5 dark:border-white/10 w-full group-hover:border-[#a45f41]/20 transition-colors">
                 <Link
                   className="flex justify-between items-center w-full"
-                  href="/systems/email/"
+                  href="systems/google-ads-setup"
                 >
                   <span className="font-bold text-[#3c2f21] dark:text-[#F5F5F5] group-hover:text-[#a45f41] transition-colors">
                     See the System
@@ -676,7 +676,7 @@ export function Services() {
               <div className="mt-auto pt-6 border-t border-black/5 dark:border-white/10 w-full group-hover:border-[#a45f41]/20 transition-colors">
                 <Link
                   className="flex justify-between items-center w-full"
-                  href="/systems/web/"
+                  href="/systems/meta-ads-setup"
                 >
                   <span className="font-bold text-[#3c2f21] dark:text-[#F5F5F5] group-hover:text-[#a45f41] transition-colors">
                     See the System
