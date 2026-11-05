@@ -35,7 +35,7 @@ export type SystemContent = {
 export const linkedin: SystemContent = {
   slug: "linkedin",
   number: "02",
-  name: "Google Ads Management",
+  name: "Google Ads Optimization & Management",
   persona: "LinkedIn",
   description: "Monthly maintenance and continuous optimization for your Google Ads campaigns. We actively check your account 2-3 times weekly, execute 1-2 batches of strategic updates monthly, log all changes in Looker Studio, and deliver video reviews with planning ahead documentation.",
   pipelineLabel: "Monthly Execution Checklist",
@@ -68,8 +68,9 @@ export const linkedin: SystemContent = {
     },
   ],
   philosophy: { 
-    label: "Founder's Logic", 
-    heading: '"Running ads without continuous monthly optimization is burning cash. Precision scaling requires structured account management."' 
+    label: "Philosophy", 
+    heading: '"Running ads without continuous monthly optimization is burning cash. Precision scaling requires structured account management."',
+    body: "Scaling ad campaigns is not a launch-and-forget event. Continuous weekly refinement and bid adjustments protect your profit margins and lower CPA."
   },
   cta: { 
     heading: "Ready for Full-Service Google Ads Management?", 
@@ -77,23 +78,46 @@ export const linkedin: SystemContent = {
   },
 };
 
-// 2. Meta Ads Scaling
+// 2. Meta Ads Optimization & Management
 export const meta: SystemContent = {
   slug: "meta",
   number: "04",
-  name: "Meta Ads Scaling",
+  name: "Meta Ads Optimization & Management",
   persona: "Meta",
-  description: "High-ROI Facebook & Instagram ad campaigns designed to generate predictable sales and qualified leads.",
+  description: "Continuous weekly optimization, creative testing, and retargeting management for Facebook & Instagram ad campaigns that scale ROAS and lower CPA.",
   pipelineLabel: "Action Pipeline",
-  pipelineIntro: "Watch how we systematically setup, test, and scale high-performing Meta ad funnels.",
+  pipelineIntro: "Watch how we systematically monitor, audit, optimize, and scale your Meta Ads month after month.",
   stages: [
-    { name: "Creative & Audience Audit", focus: "Messaging & Target Demographics", content: "We analyze your top-performing creative assets, customer avatars, and competitor positioning to craft offers that convert." },
-    { name: "Ad Setup & CAPI", focus: "Campaign Structure & Conversion API", content: "Setting up Meta Conversion API (CAPI) with pixel tracking and launch tight ad sets built for accurate data matching." },
-    { name: "Scaling & Retargeting", focus: "Custom Audiences & Dynamic Ads", content: "Retargeting engaged visitors with high-converting video and catalog ads while scaling winning cold audiences." },
-    { name: "Continuous CRO", focus: "CPL/CPA Reduction", content: "Aggressively monitoring ad fatigue, rotating creatives, and optimizing landing page conversions to keep acquisition costs low." },
+    { 
+      name: "Campaign Performance Audit", 
+      focus: "MoM/YoY Audits & Creative fatigue Checks", 
+      content: "We inspect account metrics 2-3 times weekly, analyze cost-per-acquisition (CPA) anomalies, and audit creative fatigue to ensure steady performance." 
+    },
+    { 
+      name: "Bidding & Audience Tuning", 
+      focus: "Bid Modifiers & Lookalike Expansion", 
+      content: "Adjusting manual and automated bidding strategies, segmenting high-converting age/gender demographics, and expanding lookalike audiences for broader reach." 
+    },
+    { 
+      name: "Retargeting & Creative Sprints", 
+      focus: "Custom Retargeting & Dynamic Creative A/B Testing", 
+      content: "Refreshing ad copy, launching new video/catalog creatives, and updating custom retargeting lists to convert high-intent website visitors into customers." 
+    },
+    { 
+      name: "Continuous CRO & Reporting", 
+      focus: "Looker Studio Logging & Monthly Video Teardowns", 
+      content: "All optimizations are logged live in a custom Looker Studio dashboard, accompanied by a detailed monthly video review and strategic future roadmap." 
+    },
   ],
-  philosophy: { label: "Founder's Logic", heading: '"If your ad creative doesn\'t hook them in 3 seconds, your budget is already wasted."' },
-  cta: { heading: "Ready to scale your Meta Ads?", body: "Book your strategy call to review your funnel and build a predictable Meta acquisition engine." },
+  philosophy: { 
+    label: "Credence Philosophy", 
+    heading: '"Scaling Meta Ads is not a launch-and-forget event. Continuous weekly creative refreshes and audience optimizations protect your profit margins."',
+    body: "If your ad creative doesn't hook them in 3 seconds, your budget is already wasted. Weekly creative iterations keep acquisition costs low and ROAS high."
+  },
+  cta: { 
+    heading: "Ready to Optimize and Scale Your Meta Ads?", 
+    body: "Book your strategy call to review your current Facebook & Instagram campaigns and implement our structured monthly management workflow." 
+  },
 };
 
 // 3. Social Media Ecosystem
@@ -111,8 +135,14 @@ export const social: SystemContent = {
     { name: "Advanced Tracking", focus: "Pixel, GTM & Server-Side CAPI Setup", content: "Implementing GTM Server-Side tracking, Meta Conversion API (CAPI), custom GA4 eCommerce/Lead events, and Event Match Quality (EMQ) optimization to capture lost iOS signals." },
     { name: "Retargeting & Optimization", focus: "Data-Driven Growth & Retargeting", content: "Constant creative testing, audience rotation, custom retargeting funnel refinement, and landing page optimization to aggressively lower CPL/CPA and scale ROAS." },
   ],
-  philosophy: { label: "Credence Philosophy", heading: '"People don\'t buy from the loudest person. They buy from the most trusted one."' },
-  cta: { heading: "Ready to command attention?", body: "Secure your ecosystem clarity call to discover exactly where your current digital signal is failing your revenue goals." },
+  philosophy: { 
+    label: "Credence Philosophy", 
+    heading: '"Creatives hook the audience, but bulletproof Pixel & CAPI tracking make your smart bidding learn faster and scale your ROAS."' 
+  },
+  cta: { 
+    heading: "Ready to Fix Your Meta Tracking and Scale Your Ads?", 
+    body: "Book your strategy call to select the right Meta setup package, fix pixel data loss, and scale your campaigns." 
+  },
 };
 
 // 4. Google Ads & Tracking Setup
@@ -130,7 +160,7 @@ export const email: SystemContent = {
     { name: "Advanced Tracking", focus: "GTM, GA4 & Server-Side Tracking", content: "Implementing Google Tag Manager (GTM), GA4 eCommerce/Lead events, Enhanced Conversions, and Server-Side tracking to defeat ad blockers and cookie limits." },
     { name: "Continuous Optimization", focus: "Data-Driven Growth", content: "Constant monitoring, bid strategy adjustment, quality score improvement, and negative keyword pruning to maximize your ROAS and lower CPA." },
   ],
-  philosophy: { label: "My Philosophy", heading: "Why tracked data beats guesswork.", body: "Running Google Ads without accurate server-side tracking is flying blind. When every conversion is tracked, your smart bidding learns faster and your ROAS goes up." },
+  philosophy: { label: "Philosophy", heading: "Why tracked data beats guesswork.", body: "Running Google Ads without accurate server-side tracking is flying blind. When every conversion is tracked, your smart bidding learns faster and your ROAS goes up." },
   cta: { heading: "Ready to Track Every Dollar and Scale Your Google Ads?", body: "Book your free strategy session to eliminate wasted ad spend, fix conversion tracking, and build a predictable growth engine." },
 };
 
@@ -140,15 +170,15 @@ export const web: SystemContent = {
   number: "05",
   name: "Website",
   persona: "Web",
-  description: "Most websites are digital brochures. They look fine. They do nothing. People land on them and leave without buying. We build websites that sell.",
+  description: "Most analytics reports are messy spreadsheets. They look complex, but tell you nothing. We build interactive Looker Studio dashboards that turn raw ad data into actionable revenue metrics.",
   pipelineLabel: "Architecture Blueprint",
-  pipelineIntro: "See the exact architecture we build to transform an outdated online presence into dominating Conversion Real Estate.",
+  pipelineIntro: "See the exact architecture we build to transform fragmented multi-channel data into a single, real-time command center.",
   stages: [
-    { name: "The Signal Page", focus: "Immediate Credibility.", content: 'A 1 to 3 page site that immediately tells visitors: "This person knows what they\'re doing." We close the gap between how good you are offline and how you look online.' },
-    { name: "The Full Site", focus: "Conversion Engine.", content: "4 to 6 pages that tell your story, prove your expertise, and convert visitors into leads." },
-    { name: "The Platform", focus: "Complete Digital Home.", content: "7 to 15+ pages. A full content hub. The complete digital home of your brand." },
-    { name: "Full Dominance", focus: "Omnipresent Authority.", content: "Your website, SEO, PR, and all channels working together. You become impossible to miss." },
+    { name: "The Signal Connect", focus: "Multi-Channel Integration", content: 'Connecting Google Ads, Meta Ads, GA4, GTM, and CRM data sources into a centralized Looker Studio infrastructure with clean automated data streams.' },
+    { name: "Core KPI Architecture", focus: "Actionable Metric Blueprint", content: "Designing clean, custom visual layouts that highlight real ROAS, CPA, Conversion Rates, and Revenue metrics, eliminating vanity metrics." },
+    { name: "Drill-Down Insights", focus: "Granular Performance Analysis", content: "Implementing interactive date range controls, campaign-level filters, device breakdowns, and geographical maps for deeper strategic decision-making." },
+    { name: "Automated Reporting & Video Teardowns", focus: "Automated Sharing & Monthly Audits", content: "Setting up automated email delivery to stakeholders, shareable access permissions, and monthly recorded video walkthroughs explaining key trends." },
   ],
-  philosophy: { label: "Credence Philosophy", heading: "Why your website matters more than you think.", body: "Your website is the only digital real estate you truly own. It needs to do more than look good. It needs to make people trust you before they ever get on a call. If it's not doing that, it's not an asset. It's a liability." },
-  cta: { heading: "Ready to fix it?", body: "Apply below to find out exactly where your digital presence is costing you authority and how to architect a high-converting footprint." },
+  philosophy: { label: "Philosophy", heading: "Why your analytics dashboard matters more than you think.", body: "If you can't measure your ad performance accurately in real-time, you're flying blind. Clean reporting turns data into growth strategies." },
+  cta: { heading: "Ready to build your Looker Studio dashboard?", body: "Book your strategy call to discover how custom data visualization can eliminate guesswork from your marketing campaigns." },
 };

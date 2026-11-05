@@ -10,7 +10,7 @@ export const metadata: Metadata = { title: "Meta Ads Management", description: m
 export default function LinkedInPage() {
   return (
     <SystemShell system={meta}>
-      <SystemHero system={meta}>From <span className="text-[#3c2f21]/30 line-through decoration-[#ffbc16] decoration-2">invisible</span><br />to undeniable.</SystemHero>
+      <SystemHero system={meta}>From ad spend <span className="text-[#3c2f21]/30 line-through decoration-[#ffbc16] decoration-2">leaks</span><br />to scalable profit.</SystemHero>
       <ActionPipeline system={meta} />
       <SystemPhilosophy system={meta} />
     </SystemShell>

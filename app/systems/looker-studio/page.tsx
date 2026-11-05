@@ -11,7 +11,7 @@ export const metadata: Metadata = { title: "Looker Studio", description: web.des
 export default function WebsitePage() {
   return (
     <SystemShell system={web}>
-      <SystemHero system={web}>Your website is either closing deals or losing them.<br /><span className="text-[#64748b]">Which is it?</span></SystemHero>
+      <SystemHero system={web}>Your dashboard is either giving clarity or causing confusion.<br /><span className="text-[#64748b]">Which is it?</span></SystemHero>
       <ActionPipeline system={web} />
       <SystemPhilosophy system={web} />
       {web.cta && <SystemCTA cta={web.cta} />}

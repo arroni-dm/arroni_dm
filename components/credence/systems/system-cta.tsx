@@ -8,7 +8,7 @@ export function SystemCTA({ cta }: { cta: NonNullable<SystemContent["cta"]> }) {
       <div className="container mx-auto max-w-3xl px-4 text-center">
         <h2 id="system-cta-heading" className="font-outfit mb-6 text-3xl font-black tracking-tighter md:text-4xl">{cta.heading}</h2>
         <p className="mx-auto mb-10 max-w-[500px] font-medium text-[#3c2f21]/60">{cta.body}</p>
-        <BookingButton className={`${bookingButtonClass} inline-flex py-5`}>SCHEDULE A 15-MIN CALL</BookingButton>
+        <BookingButton className={`${bookingButtonClass} inline-flex py-5`}>BOOK A FREE STRATEGY CALL</BookingButton>
       </div>
     </section>
   );

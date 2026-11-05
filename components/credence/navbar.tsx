@@ -124,7 +124,7 @@ export function Navbar() {
                     className="px-5 py-2 text-sm font-black bg-[#ffbc16] text-[#3c2f21] rounded-full hover:shadow-[0_4px_20px_0_rgba(255,188,22,0.4)] transition-all block whitespace-nowrap uppercase tracking-widest"
                     tabIndex={0}
                   >
-                    SCHEDULE A 15-MIN CALL
+                    BOOK A FREE STRATEGY CALL
                   </BookingButton>
                 </div>
               </div>
