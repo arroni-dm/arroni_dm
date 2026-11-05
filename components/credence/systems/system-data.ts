@@ -1,6 +1,23 @@
 export type SystemSlug = "linkedin" | "social" | "email" | "web" | "meta";
 export type BookingPersona = "General" | "LinkedIn" | "Social" | "Email" | "Web" | "Meta";
 
+export type SystemStage = {
+  name: string;
+  focus: string;
+  content: string;
+};
+
+export type SystemPhilosophy = {
+  label: string;
+  heading: string;
+  body?: string;
+};
+
+export type SystemCTA = {
+  heading: string;
+  body: string;
+};
+
 export type SystemContent = {
   slug: SystemSlug;
   number: string;
@@ -9,58 +26,101 @@ export type SystemContent = {
   description: string;
   pipelineLabel: string;
   pipelineIntro: string;
-  stages: { name: string; focus: string; content: string }[];
-  philosophy: { label: string; heading: string; body?: string };
-  cta?: { heading: string; body: string };
+  stages: SystemStage[];
+  philosophy: SystemPhilosophy;
+  cta?: SystemCTA;
 };
 
+// 1. Google Ads Management (Monthly Execution Checklist)
 export const linkedin: SystemContent = {
-  slug: "linkedin", number: "02", name: "LinkedIn", persona: "LinkedIn",
-  description: "Your LinkedIn profile is either working for you or against you. Right now, it's probably not working hard enough. Credence closes the gap.",
-  pipelineLabel: "Action Pipeline",
-  pipelineIntro: "Watch how we systematically strip away invisibility and establish market dominance.",
+  slug: "linkedin",
+  number: "02",
+  name: "Google Ads Management",
+  persona: "LinkedIn",
+  description: "Monthly maintenance and continuous optimization for your Google Ads campaigns. We actively check your account 2-3 times weekly, execute 1-2 batches of strategic updates monthly, log all changes in Looker Studio, and deliver video reviews with planning ahead documentation.",
+  pipelineLabel: "Monthly Execution Checklist",
+  pipelineIntro: "Here is the comprehensive list of tasks and optimizations we execute each month to maintain and scale your Google Ads account.",
   stages: [
-    { name: "The Reset", focus: "First Impressions & Profile Architecture.", content: "We rebuild your profile from scratch. We make sure the first thing someone reads about you makes them want to know more." },
-    { name: "The 30-Day Sprint", focus: "Building Trust & Proving Expertise.", content: "12 posts that prove your expertise and build trust with the people who matter. We write them. You approve them." },
-    { name: "Full Management", focus: "Network Growth & Consistent Engagement.", content: "We run your LinkedIn completely. 20+ posts per month. Network growth. Inbox management. You focus on your business. We focus on your presence." },
-    { name: "Elite Advisory", focus: "Global Industry Leadership.", content: "PR. Speaking opportunities. Industry positioning. We turn your name into one your industry cannot ignore." },
-    { name: "Roni Test", focus: "Global Industry Leadership.", content: "PR. Speaking opportunities. Industry positioning. We turn your name into one your industry cannot ignore." },
+    { 
+      name: "Performance & Bidding Audit", 
+      focus: "MoM/YoY Audits & Bid System Adjustments", 
+      content: "Compare performance against previous period & year. Review campaigns for anomalies, evaluate Google recommendations, review/apply manual bids, and adjust bid modifiers across devices, ad schedules, geo locations, search partners, demographics, and remarketing lists." 
+    },
+    { 
+      name: "Ad Copies & Extensions", 
+      focus: "Creative Testing & Asset Management", 
+      content: "Write and test new ad copies, review promotional ads, verify all active ad extensions, and create new extensions where applicable to maximize Quality Score and CTR." 
+    },
+    { 
+      name: "Keywords & Targeting Engine", 
+      focus: "Search Term Audits & Negative Keywords", 
+      content: "Perform manual keyword reviews for expansion and negative terms, apply negative keyword lists to missing campaigns, find new high-intent keywords, and update business data." 
+    },
+    { 
+      name: "Architecture & Expansion", 
+      focus: "Category Coverage & Budget Allocation", 
+      content: "Review website vs account for uncovered selling products/categories, add missing campaign types, optimize budget allocation for finite budgets, leverage mobile/tablet/desktop segmentation opportunities, and update remarketing lists." 
+    },
+    { 
+      name: "Reporting & Strategy", 
+      focus: "Looker Studio & Video Reviews", 
+      content: "All updates and optimizations are logged in a Data Studio (Looker Studio) dashboard. Includes a monthly video review breakdown and planning ahead documentation." 
+    },
   ],
-  philosophy: { label: "Founder's Logic", heading: '"If someone can\'t immediately see your value, they will assume you have none."' },
+  philosophy: { 
+    label: "Founder's Logic", 
+    heading: '"Running ads without continuous monthly optimization is burning cash. Precision scaling requires structured account management."' 
+  },
+  cta: { 
+    heading: "Ready for Full-Service Google Ads Management?", 
+    body: "Book your strategy call to review your ad account and implement a structured monthly optimization workflow." 
+  },
 };
 
+// 2. Meta Ads Scaling
 export const meta: SystemContent = {
-  slug: "meta", number: "04", name: "Meta", persona: "Meta",
-  description: "Your LinkedIn profile is either working for you or against you. Right now, it's probably not working hard enough. Credence closes the gap.",
+  slug: "meta",
+  number: "04",
+  name: "Meta Ads Scaling",
+  persona: "Meta",
+  description: "High-ROI Facebook & Instagram ad campaigns designed to generate predictable sales and qualified leads.",
   pipelineLabel: "Action Pipeline",
-  pipelineIntro: "Watch how we systematically strip away invisibility and establish market dominance.",
+  pipelineIntro: "Watch how we systematically setup, test, and scale high-performing Meta ad funnels.",
   stages: [
-    { name: "The Reset", focus: "First Impressions & Profile Architecture.", content: "We rebuild your profile from scratch. We make sure the first thing someone reads about you makes them want to know more." },
-    { name: "The 30-Day Sprint", focus: "Building Trust & Proving Expertise.", content: "12 posts that prove your expertise and build trust with the people who matter. We write them. You approve them." },
-    { name: "Full Management", focus: "Network Growth & Consistent Engagement.", content: "We run your LinkedIn completely. 20+ posts per month. Network growth. Inbox management. You focus on your business. We focus on your presence." },
-    { name: "Elite Advisory", focus: "Global Industry Leadership.", content: "PR. Speaking opportunities. Industry positioning. We turn your name into one your industry cannot ignore." },
-    { name: "Roni Test", focus: "Global Industry Leadership.", content: "PR. Speaking opportunities. Industry positioning. We turn your name into one your industry cannot ignore." },
+    { name: "Creative & Audience Audit", focus: "Messaging & Target Demographics", content: "We analyze your top-performing creative assets, customer avatars, and competitor positioning to craft offers that convert." },
+    { name: "Ad Setup & CAPI", focus: "Campaign Structure & Conversion API", content: "Setting up Meta Conversion API (CAPI) with pixel tracking and launch tight ad sets built for accurate data matching." },
+    { name: "Scaling & Retargeting", focus: "Custom Audiences & Dynamic Ads", content: "Retargeting engaged visitors with high-converting video and catalog ads while scaling winning cold audiences." },
+    { name: "Continuous CRO", focus: "CPL/CPA Reduction", content: "Aggressively monitoring ad fatigue, rotating creatives, and optimizing landing page conversions to keep acquisition costs low." },
   ],
-  philosophy: { label: "Founder's Logic", heading: '"If someone can\'t immediately see your value, they will assume you have none."' },
+  philosophy: { label: "Founder's Logic", heading: '"If your ad creative doesn\'t hook them in 3 seconds, your budget is already wasted."' },
+  cta: { heading: "Ready to scale your Meta Ads?", body: "Book your strategy call to review your funnel and build a predictable Meta acquisition engine." },
 };
 
+// 3. Social Media Ecosystem
 export const social: SystemContent = {
-  slug: "social", number: "03", name: "Social Media", persona: "Social",
-  description: '"Content creation" is a trap. You don\'t need more content. You need a narrative. We build social ecosystems that turn silent watchers into high-value clients.',
+  slug: "social",
+  number: "03",
+  name: "Social Media",
+  persona: "Social",
+  description: 'Drive high-ROI sales and lead volume on Facebook & Instagram with bulletproof Meta Pixel, GTM, GA4, and Conversion API (CAPI) setup that bypasses ad blockers.',
   pipelineLabel: "Action Pipeline",
-  pipelineIntro: "Watch how we systematically transition your brand from isolated posts to a globally dominant social ecosystem.",
+  pipelineIntro: "From foundational Pixel & CAPI tracking to full retargeting audience funnels.",
   stages: [
-    { name: "Ecosystem Audit", focus: "Finding the Gaps.", content: "We look at where you are. We find the gaps. We fix the messaging before we post a single word." },
-    { name: "The Visibility Sprint", focus: "Immediate Market Impact.", content: "30 days. High-intensity. We change how your market sees you immediately." },
-    { name: "Ongoing Dominance", focus: "Content that Converts.", content: "We take over the day-to-day. You provide the expertise. We turn it into content that converts." },
-    { name: "Scale & Omnipresence", focus: "Expanding Your Footprint.", content: "We expand your footprint. More platforms. More reach. Same unignorable authority." },
+    { name: "Strategy & Audience Research", focus: "Customer Avatar & Messaging Assessment", content: "We analyze your target market, competitors, and buyer personas. Then, we structure high-converting offers and audience angles built to convert cold traffic." },
+    { name: "Ad Setup & Creative Execution", focus: "Targeted Campaign Architecture", content: "Setting up structured Prospecting and Retargeting campaigns with tightly grouped ad sets, compelling ad copy, and high-converting visual creative formats." },
+    { name: "Advanced Tracking", focus: "Pixel, GTM & Server-Side CAPI Setup", content: "Implementing GTM Server-Side tracking, Meta Conversion API (CAPI), custom GA4 eCommerce/Lead events, and Event Match Quality (EMQ) optimization to capture lost iOS signals." },
+    { name: "Retargeting & Optimization", focus: "Data-Driven Growth & Retargeting", content: "Constant creative testing, audience rotation, custom retargeting funnel refinement, and landing page optimization to aggressively lower CPL/CPA and scale ROAS." },
   ],
   philosophy: { label: "Credence Philosophy", heading: '"People don\'t buy from the loudest person. They buy from the most trusted one."' },
   cta: { heading: "Ready to command attention?", body: "Secure your ecosystem clarity call to discover exactly where your current digital signal is failing your revenue goals." },
 };
 
+// 4. Google Ads & Tracking Setup
 export const email: SystemContent = {
-  slug: "email", number: "01", name: "Email", persona: "Email",
+  slug: "email",
+  number: "01",
+  name: "Google Ads & Tracking",
+  persona: "Email",
   description: "Drive high-intent traffic, track every single conversion accurately with GTM & GA4, and turn ad clicks into predictable revenue.",
   pipelineLabel: "Action Pipeline",
   pipelineIntro: "See the exact sequence how we audit, setup, track, and scale your Google Ads campaigns.",
@@ -70,12 +130,16 @@ export const email: SystemContent = {
     { name: "Advanced Tracking", focus: "GTM, GA4 & Server-Side Tracking", content: "Implementing Google Tag Manager (GTM), GA4 eCommerce/Lead events, Enhanced Conversions, and Server-Side tracking to defeat ad blockers and cookie limits." },
     { name: "Continuous Optimization", focus: "Data-Driven Growth", content: "Constant monitoring, bid strategy adjustment, quality score improvement, and negative keyword pruning to maximize your ROAS and lower CPA." },
   ],
-  philosophy: { label: "Credence Philosophy", heading: "Why email beats social.", body: "Going viral is luck. A strong email list is a strategy. When you own your list, you control your revenue. You're not at the mercy of an algorithm." },
+  philosophy: { label: "My Philosophy", heading: "Why tracked data beats guesswork.", body: "Running Google Ads without accurate server-side tracking is flying blind. When every conversion is tracked, your smart bidding learns faster and your ROAS goes up." },
   cta: { heading: "Ready to Track Every Dollar and Scale Your Google Ads?", body: "Book your free strategy session to eliminate wasted ad spend, fix conversion tracking, and build a predictable growth engine." },
 };
 
+// 5. Website Architecture
 export const web: SystemContent = {
-  slug: "web", number: "05", name: "Website", persona: "Web",
+  slug: "web",
+  number: "05",
+  name: "Website",
+  persona: "Web",
   description: "Most websites are digital brochures. They look fine. They do nothing. People land on them and leave without buying. We build websites that sell.",
   pipelineLabel: "Architecture Blueprint",
   pipelineIntro: "See the exact architecture we build to transform an outdated online presence into dominating Conversion Real Estate.",

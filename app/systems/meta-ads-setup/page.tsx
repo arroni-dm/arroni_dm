@@ -11,7 +11,7 @@ export const metadata: Metadata = { title: "Meta Ads Setup", description: social
 export default function SocialMediaPage() {
   return (
     <SystemShell system={social}>
-      <SystemHero system={social}><span className="text-[#3c2f21]/30 line-through decoration-[#ffbc16] decoration-2">Stop posting.</span><br />Start commanding.</SystemHero>
+      <SystemHero system={social}><span className="text-[#3c2f21]/30 line-through decoration-[#ffbc16] decoration-2">Stop Losing Ad Signals.</span><br />Scale with Server-Side Tracking.</SystemHero>
       <ActionPipeline system={social} />
       <SystemPhilosophy system={social} />
       {social.cta && <SystemCTA cta={social.cta} />}

@@ -10,7 +10,7 @@ export const metadata: Metadata = { title: "Google Ads Management", description:
 export default function LinkedInPage() {
   return (
     <SystemShell system={linkedin}>
-      <SystemHero system={linkedin}>From <span className="text-[#3c2f21]/30 line-through decoration-[#ffbc16] decoration-2">invisible</span><br />to undeniable.</SystemHero>
+      <SystemHero system={linkedin}>Data-Driven Google Ads Management<span className="text-[#3c2f21]/30 line-through decoration-[#ffbc16] decoration-2"></span><br /></SystemHero>
       <ActionPipeline system={linkedin} />
       <SystemPhilosophy system={linkedin} />
     </SystemShell>
