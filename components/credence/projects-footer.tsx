@@ -7,7 +7,7 @@ export function Footer() {
         <div className="grid grid-cols-1 md:grid-cols-12 gap-12 md:gap-8">
           <div className="md:col-span-5 flex flex-col gap-6">
             <h4 className="text-2xl font-black tracking-tight">
-              Growth with a #1 Full-stack Digital Marketing Manager.
+              Scale Your Business with Expert Performance Marketing.
             </h4>
             <p className="text-white/70 text-sm leading-relaxed max-w-md">
               There is a gap between how good your product/service actually are

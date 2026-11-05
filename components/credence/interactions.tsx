@@ -489,7 +489,7 @@ export function CredenceInteractions({
             <X className="w-5 h-5" />
           </button>
           <h3 id="booking-title" className="text-xl font-black">
-            Book Your Clarity Session
+            Book Your Strategy Session
           </h3>
           <p className="text-white/60 text-xs font-medium mt-1">
             {step
@@ -591,16 +591,13 @@ export function CredenceInteractions({
                         Find the gap.
                       </h5>
                       <p className="text-sm text-[#3c2f21]/70 leading-relaxed mb-8">
-                        A focused 30-minute diagnosis to identify exactly where
-                        your online presence is losing you money. No pitch. No
-                        fluff.
+                        A focused 30-minute diagnosis to identify exactly where your ad account is leaking cash and where your conversion tracking is broken. No pitch. No fluff.
                       </p>
                       <div className="w-full pt-6 border-t border-[#3c2f21]/10 text-sm text-[#3c2f21]/80 font-semibold space-y-4">
-                        <p>✓ Honest positioning audit</p>
-                        <p>✓ One clear priority to fix</p>
+                        <p>✓ Quick Account & Tracking Audit</p>
+                        <p>✓ One clear priority fix to boost ROAS</p>
                         <p className="text-xs text-[#3c2f21]/40 italic font-medium">
-                          Selective. We only accept applicants we can genuinely
-                          help.
+                          Selective. We only accept business owners we can genuinely help.
                         </p>
                       </div>
                     </button>
@@ -616,18 +613,18 @@ export function CredenceInteractions({
                         ★ Exclusive Consultation
                       </span>
                       <h5 className="text-2xl font-black text-white mb-3">
-                        Get the full picture.
+                        Get the Full Blueprint.
                       </h5>
                       <p className="text-sm text-white/60 leading-relaxed mb-8">
-                        A deep-dive strategy session for founders, experts,
-                        business owners, creatives who want a complete roadmap.
-                        Immediate, senior-level attention.
+                        A deep-dive strategy session for business owners and e-commerce 
+                        founders who want a complete Google Ads scale roadmap and 
+                        end-to-end server-side tracking architecture. Immediate, senior-level attention.
                       </p>
                       <div className="w-full pt-6 border-t border-white/10 text-sm text-white/80 font-semibold space-y-4">
-                        <p>✓ Full multi-channel audit</p>
-                        <p>✓ Custom action plan included</p>
+                        <p>✓ Full Account, GTM & GA4 Tracking Audit</p>
+                        <p>✓ Custom 90-day Scaling Roadmap included</p>
                         <p className="text-xs text-white/30 italic font-medium">
-                          Booked instantly. Limited availability.
+                          Booked instantly. Limited monthly availability.
                         </p>
                       </div>
                     </button>

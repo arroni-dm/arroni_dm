@@ -41,12 +41,12 @@ export function SystemHero({ system, children }: { system: SystemContent; childr
             <div aria-hidden="true" className="mx-2 hidden h-8 w-px bg-black/10 sm:block" />
             <div className={`inline-flex items-center gap-2 rounded-full border px-4 py-2 text-[11px] font-black tracking-[0.15em] uppercase shadow-sm ${accent.badge}`}>
               <span aria-hidden="true" className={`size-1.5 animate-pulse rounded-full motion-reduce:animate-none ${accent.dot}`} />
-              System Status: Verified
+              GOALS-DRIVEN PERFORMANCE MARKETING
             </div>
           </div>
           <h1 id="system-heading" className={`font-outfit mb-8 text-5xl leading-[0.95] font-black tracking-tighter sm:text-6xl md:text-7xl ${system?.slug === "linkedin" ? "lg:text-8xl" : ""}`}>{children}</h1>
           <p className={`border-l-2 border-[#ffbc16] py-2 pl-6 text-lg leading-relaxed font-medium text-[#3c2f21]/80 sm:text-xl md:text-2xl ${system?.slug === "linkedin" ? "max-w-[600px]" : "max-w-[650px]"}`}>{system?.description}</p>
-          <BookingButton className={`mt-8 ${bookingButtonClass}`}>Book a Free Audit Session</BookingButton>
+          <BookingButton className={`mt-8 ${bookingButtonClass}`}>BOOK A FREE STRATEGY CALL</BookingButton>
         </div>
       </div>
     </section>

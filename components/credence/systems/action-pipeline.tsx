@@ -6,7 +6,7 @@ export function ActionPipeline({ system }: { system: SystemContent }) {
       <div className="relative z-10 container mx-auto max-w-5xl px-4">
         <div className="mb-16 text-center md:mb-24 md:text-left">
           <h2 className="mb-4 text-[11px] font-black tracking-[0.25em] text-[#ffbc16] uppercase">{system.pipelineLabel}</h2>
-          <h3 id="pipeline-heading" className="font-outfit mb-4 text-4xl font-black tracking-tighter sm:text-5xl md:text-6xl">The Process</h3>
+          <h3 id="pipeline-heading" className="font-outfit mb-4 text-4xl font-black tracking-tighter sm:text-5xl md:text-6xl">Our 4-Step Precision Process</h3>
           <p className={`mx-auto text-lg font-medium text-[#3c2f21]/60 md:mx-0 ${system.slug === "linkedin" ? "max-w-[600px]" : "max-w-[650px]"}`}>{system.pipelineIntro}</p>
         </div>
         <div data-pipeline className="relative py-10">

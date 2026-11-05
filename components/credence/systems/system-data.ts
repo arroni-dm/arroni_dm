@@ -61,17 +61,17 @@ export const social: SystemContent = {
 
 export const email: SystemContent = {
   slug: "email", number: "01", name: "Email", persona: "Email",
-  description: "Social media can disappear tomorrow. Your email list cannot. We build the system that moves your followers into a list you own. Then we turn that list into a revenue engine.",
+  description: "Drive high-intent traffic, track every single conversion accurately with GTM & GA4, and turn ad clicks into predictable revenue.",
   pipelineLabel: "Action Pipeline",
-  pipelineIntro: "See the exact sequence we execute to move from renting attention to owning a highly profitable retention ecosystem.",
+  pipelineIntro: "See the exact sequence how we audit, setup, track, and scale your Google Ads campaigns.",
   stages: [
-    { name: "The Foundation", focus: "Setting up Capture Points.", content: "We set up the capture points. Every person who discovers you gets a clear path to join your list." },
-    { name: "The Newsletter", focus: "Trust Building Asset.", content: "A regular email that keeps you in front of your best prospects. Not a sales blast. A trust-building asset that works while you sleep." },
-    { name: "Automation", focus: "Educate, Trust, Sell.", content: "We build email sequences that educate, build trust, and sell. They run without you." },
-    { name: "The Vault", focus: "Advanced Retention.", content: "Advanced retention systems. Member portals. High-level briefings. Your list becomes your most valuable business asset." },
+    { name: "Audit & Strategy", focus: "Account & Tracking Assessment", content: "We analyze your target keywords, competitors, and past ad performance. Then, we set up proper conversion architecture to ensure clean data flow." },
+    { name: "Campaign Setup", focus: "Targeted Ads Architecture", content: "Setting up high-converting Search, Performance Max, and Remarketing campaigns with tightly grouped ad groups, negative keywords, and compelling ad copy." },
+    { name: "Advanced Tracking", focus: "GTM, GA4 & Server-Side Tracking", content: "Implementing Google Tag Manager (GTM), GA4 eCommerce/Lead events, Enhanced Conversions, and Server-Side tracking to defeat ad blockers and cookie limits." },
+    { name: "Continuous Optimization", focus: "Data-Driven Growth", content: "Constant monitoring, bid strategy adjustment, quality score improvement, and negative keyword pruning to maximize your ROAS and lower CPA." },
   ],
   philosophy: { label: "Credence Philosophy", heading: "Why email beats social.", body: "Going viral is luck. A strong email list is a strategy. When you own your list, you control your revenue. You're not at the mercy of an algorithm." },
-  cta: { heading: "Ready to stabilize your income?", body: "Secure your retention infrastructure Clarity call and stop letting your most valuable followers slip through the cracks." },
+  cta: { heading: "Ready to Track Every Dollar and Scale Your Google Ads?", body: "Book your free strategy session to eliminate wasted ad spend, fix conversion tracking, and build a predictable growth engine." },
 };
 
 export const web: SystemContent = {

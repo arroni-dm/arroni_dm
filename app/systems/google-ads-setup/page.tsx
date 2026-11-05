@@ -11,7 +11,7 @@ export const metadata: Metadata = { title: "Google Ads Setup", description: emai
 export default function EmailPage() {
   return (
     <SystemShell system={email}>
-      <SystemHero system={email}>Own your audience.<br /><span className="text-[#ffbc16]">Predict your revenue.</span></SystemHero>
+      <SystemHero system={email}>GOALS-DRIVEN<br /><span className="text-[#ffbc16]">PERFORMANCE MARKETING</span></SystemHero>
       <ActionPipeline system={email} />
       <SystemPhilosophy system={email} />
       {email.cta && <SystemCTA cta={email.cta} />}
