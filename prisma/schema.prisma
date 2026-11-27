@@ -1,0 +1,95 @@
+// Prisma 6 + MongoDB. (Prisma 7 has no MongoDB support yet — keep this on 6.x.)
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "mongodb"
+  url      = env("DATABASE_URL")
+}
+
+enum Role {
+  ADMIN
+}
+
+enum ProjectStatus {
+  DRAFT
+  PUBLISHED
+}
+
+model User {
+  id           String    @id @default(auto()) @map("_id") @db.ObjectId
+  email        String    @unique
+  name         String
+  passwordHash String
+  role         Role      @default(ADMIN)
+  createdAt    DateTime  @default(now())
+  updatedAt    DateTime  @updatedAt
+  sessions     Session[]
+
+  @@map("users")
+}
+
+// Server-side sessions. The cookie holds a random token; only its SHA-256 hash
+// is stored here, so a database leak cannot be replayed as a login cookie.
+model Session {
+  id        String   @id @default(auto()) @map("_id") @db.ObjectId
+  tokenHash String   @unique
+  userId    String   @db.ObjectId
+  user      User     @relation(fields: [userId], references: [id], onDelete: Cascade)
+  expiresAt DateTime
+  createdAt DateTime @default(now())
+
+  @@index([userId])
+  @@index([expiresAt])
+  @@map("sessions")
+}
+
+// Failed-login log used for throttling (per email and per IP).
+model LoginAttempt {
+  id        String   @id @default(auto()) @map("_id") @db.ObjectId
+  email     String
+  ip        String
+  createdAt DateTime @default(now())
+
+  @@index([email, createdAt])
+  @@index([ip, createdAt])
+  @@map("login_attempts")
+}
+
+type ProjectResult {
+  value String
+  label String
+}
+
+model Project {
+  id               String        @id @default(auto()) @map("_id") @db.ObjectId
+  slug             String        @unique
+  title            String
+  category         String
+  heroMetric       String
+  heroMetricLabel  String
+  description      String
+  // Sanitised-by-construction rich text: a ProseMirror/Tiptap JSON document.
+  content          Json
+  image            String
+  imageAlt         String        @default("")
+  gallery          String[]
+  highlights       String[]
+  results          ProjectResult[]
+  technologies     String[]
+  liveUrl          String?
+  githubUrl        String?
+  clientName       String?
+  completedAt      DateTime?
+  featured         Boolean       @default(false)
+  status           ProjectStatus @default(DRAFT)
+  seoTitle         String?
+  seoDescription   String?
+  publishedAt      DateTime?
+  createdAt        DateTime      @default(now())
+  updatedAt        DateTime      @updatedAt
+
+  @@index([status, createdAt])
+  @@map("projects")
+}

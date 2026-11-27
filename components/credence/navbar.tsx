@@ -25,6 +25,8 @@ const systemPersonas: Record<string, BookingPersona> = {
 
 export function Navbar() {
   const pathname = usePathname();
+  // The admin CMS and its login screen have their own chrome.
+  if (pathname === "/login" || pathname === "/admin" || pathname.startsWith("/admin/")) return null;
   const currentSystem = pathname.startsWith("/systems/") ? pathname.split("/")[2] : undefined;
   const currentPage = pathname === "/" ? "home"
     : pathname === "/contact" ? "contact"
